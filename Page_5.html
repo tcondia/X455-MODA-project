@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moda | Magazine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="images/moda-icon.png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background: #e8e6e3;
+      overflow-x: hidden;
+    }
+    /* Header Styles */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #888888;
+      border-bottom: 5px solid #c39fc4;
+      padding: 0 32px;
+      min-height: 72px;
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+    }
+    .logo img {
+      height: 48px;
+      display: block;
+    }
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .nav-list li a:hover {
+      color: #c39fc4;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1200;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header-icons a, .header-icons button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      outline: none;
+    }
+    .search-bar {
+      display: none;
+      width: 100%;
+      background: #abc29b;
+      padding: 12px 32px;
+      border-bottom: 1px solid #888888;
+      box-sizing: border-box;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Hamburger centering for mobile */
+    @media (max-width: 800px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+        position: relative;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        margin-left: 0;
+      }
+      .main-nav {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-list {
+        display: none !important;
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: 18px 0;
+        z-index: 1100;
+      }
+      .nav-list.open {
+        display: flex !important;
+      }
+      .nav-list li a {
+        font-size: 15px;
+        padding: 12px 24px;
+      }
+    }
+
+    /* Background Section & accent lines */
+    .background-section {
+      position: relative;
+      background-image: url('images/background4reduced.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      padding-bottom: 120px;
+      background-color: #000;
+      box-sizing: border-box;
+    }
+    .accent-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .vertical-accent {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 209px;
+      width: 5px;
+      background-color: white;
+      z-index: 2;
+    }
+    .horizontal-accent {
+      position: absolute;
+      top: 50%;
+      height: 5px;
+      width: 100%;
+      background-color: white;
+      transform: translateY(-5px);
+      z-index: 2;
+    }
+    .white-text-box {
+      position: absolute;
+      top: 12%;
+      left: 0;
+      width: 175px;
+      height: 175px;
+      background-color: #c39fc4;
+      font-family: Times, serif;
+      font-weight: lighter;
+      color: #ffffff;
+      font-size: 30px;
+      line-height: 1.2;
+      transform: translateY(-195px);
+      margin: 8px;
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 0;
+      z-index: 3;
+    }
+
+    /* Main Text Overlay */
+    .text-overlay-box {
+      position: relative;
+      background-color: #888888;
+      opacity: .90;
+      color: white;
+      font-family: Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: lighter;
+      line-height: 1.45;
+      border-radius: 0%;
+      margin: 52px auto 32px auto;
+      max-width: 850px;
+      width: 90vw;
+      padding: 32px 32px 26px 32px;
+      z-index: 4;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      box-shadow: 0 4px 24px #0002;
+    }
+    .text-overlay-box a {
+      color: #fff !important;
+      text-decoration: underline;
+    }
+
+    /* Accordion */
+    .accordion {
+      margin: 32px auto 16px auto;
+      background: #888888ee;
+      border-radius: 14px;
+      max-width: 600px;
+      width: 95vw;
+      box-shadow: 0 2px 10px #0001;
+      z-index: 10;
+      position: relative;
+    }
+    .accordion-item + .accordion-item {
+      border-top: 1px solid #ccc;
+    }
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      background: #888888;
+      border: none;
+      outline: none;
+      padding: 1em;
+      border-radius: 0;
+      color: white;
+      font-size: 18px;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .accordion-header:hover {
+      background: #bdbdbd;
+    }
+    .accordion-content {
+      display: none;
+      padding: 1em;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+    }
+    .accordion-content.open {
+      display: block;
+    }
+
+    /* Gallery & Lightbox */
+    .gallery {
+      display: grid;
+      gap: 10px;
+      padding: 60px 20px 20px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
+      z-index: 4;
+      position: relative;
+    }
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform .2s;
+      box-shadow: 0 1px 6px #0001;
+      background: #fff;
+    }
+    .thumbnail:hover { transform: scale(1.03); }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.94);
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 2px 24px #000b;
+      background: #fff;
+    }
+
+    /* Footer */
+    .site-footer {
+      height: 120px;
+      background-color: #888888;
+      border-top: 5px solid #c39fc4;
+      position: relative;
+      width: 100%;
+      z-index: 20;
+    }
+    .footer-bar {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      right: 418px;
+      background-color: #c39fc4;
+    }
+    .footer-logo {
+      position: absolute;
+      right: calc(209px - 90px);
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60px;
+    }
+    .footer-contact {
+      position: absolute;
+      bottom: 55px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 40px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: 35px;
+      right: 500px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      transition: opacity 0.2s ease;
+    }
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+
+    /* Responsive Styles */
+
+    @media (max-width: 1100px) {
+      .text-overlay-box { padding: 24px 4vw; font-size: 16px; }
+      .accordion { max-width: 96vw; }
+      .gallery { max-width: 99vw; }
+    }
+    @media (max-width: 900px) {
+      .text-overlay-box { font-size: 15px; padding: 14px 2vw; }
+      .accordion-header { font-size: 16px; }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .footer-logo { height: 44px; }
+    }
+    @media (max-width: 700px) {
+      .text-overlay-box { width: 99vw; max-width: 99vw; }
+      .accordion { width: 99vw; }
+      .gallery { grid-template-columns: 1fr 1fr; padding: 30px 6px 10px 6px; }
+      .white-text-box { width: 110px; height: 110px; font-size: 18px; }
+    }
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .text-overlay-box { font-size: 14px; padding: 8px 2vw; }
+      .accordion-header { font-size: 14px; }
+    }
+    @media (max-width: 520px) {
+      .text-overlay-box { font-size: 13px; }
+    }
+    @media (max-width: 750px) {
+      .site-footer {
+        position: static;
+        height: auto;
+        padding: 20px 8px 16px 8px;
+        text-align: center;
+      }
+      .footer-contact, .footer-text { display: none; }
+      .footer-logo, .footer-bar {
+        position: static;
+        display: block;
+        margin: 8px auto 0 auto;
+        left: unset; right: unset; top: unset; transform: none;
+        height: 40px; max-width: 90vw;
+      }
+      .social-icons {
+        position: static;
+        justify-content: center;
+        margin: 16px 0 0 0;
+      }
+      .social-icon { width: 25px; height: 25px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="/Users/acondia/Desktop/ModaWebsite/index.html">
+        <img src="images/Moda-Brand.png" alt="Moda">
+      </a>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_2.html">Designers</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_3.html">Apparel</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_4.html">Fashion</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_5.html">Magazine</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_6.html">Videos</a></li>
+      </ul>
+      <button aria-label="Open menu" class="menu-toggle" id="menu-toggle">☰</button>
+    </nav>
+    <div class="header-icons">
+      <button aria-label="Toggle search" id="search-toggle">
+        <img alt="Search" src="images/Search-Icon.png" style="height: 22px;"/>
+      </button>
+      <a aria-label="Shopping Cart" href="/cart.html">
+        <img alt="Cart" src="images/White-Cart.png" style="height: 22px;"/>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input placeholder="Search Moda..." type="text"/>
+  </div>
+
+  <main>
+    <div class="background-section">
+      <div class="accent-lines">
+        <div class="vertical-accent"></div>
+        <div class="horizontal-accent"></div>
+        <div class="white-text-box">
+          Magazine
+        </div>
+      </div>
+
+      <!-- Accordion for Videos -->
+      <section class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">Moda Video Series | Inside Yohji Yamamoto's Fashion Philosophy</button>
+          <div class="accordion-content">
+            <iframe width="100%" height="315"
+              src="https://www.youtube.com/embed/pSJsqYH-hK4?si=FhEip9PxHH8JeN1N"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Moda Video Series | 73 Questions with Anna Wintour</button>
+          <div class="accordion-content">
+            <iframe width="100%" height="315"
+              src="https://www.youtube.com/embed/MhXwO_mkdzQ?si=sIe6HT8CWE3ci097"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-header">Moda Video Series | Pharrell Opens Up About Louis Vuitton, Dreams & Fashion Design</button>
+          <div class="accordion-content">
+            <iframe width="100%" height="315"
+              src="https://www.youtube.com/embed/Odyf5bCppKI?si=HFyVtAEkVjGyBn7w"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Magazine Text Box -->
+      <div class="text-overlay-box">
+        <p>
+          <strong>Fashion Scene</strong> is the bold, stylish voice of Moda—a magazine that captures the pulse of fashion, culture, and creativity around the world.<br><br>
+          With a sharp eye for what's next and a reverence for what endures, Fashion Scene brings together emerging designers, iconic tastemakers, and the visual storytellers shaping how we dress and express ourselves. Each issue is a curated experience, blending runway reportage with behind-the-scenes access, in-depth features, and striking editorial photography.<br><br>
+          Whether it’s spotlighting sustainable ateliers in Paris, decoding the digital couture revolution, or exploring the intersections of fashion and art in Tokyo, Fashion Scene delivers global style with edge and intellect.<br><br>
+          But it’s more than just a magazine—it’s Moda’s manifesto. A platform for fresh perspectives. A showcase for boundary-pushing design. And a love letter to those who believe fashion is more than fabric—it’s a way of seeing and being.<br><br>
+          Printed quarterly and powered by Moda’s fearless spirit, Fashion Scene invites readers to step into a world where aesthetic meets meaning, and every page tells a story worth wearing.<br><br>
+          <a href="images/Moda Magazine Issue 1.jpeg" target="_blank">Download our inaugural issue.</a>
+        </p>
+      </div>
+
+      <!-- Responsive Gallery -->
+      <div class="gallery">
+        <img src="images/thumb1.jpg" class="thumbnail" onclick="openLightbox(this)">
+        <img src="images/thumb2.jpg" class="thumbnail" onclick="openLightbox(this)">
+        <img src="images/thumb3.jpg" class="thumbnail" onclick="openLightbox(this)">
+        <img src="images/thumb4.jpg" class="thumbnail" onclick="openLightbox(this)">
+        <img src="images/thumb5.jpg" class="thumbnail" onclick="openLightbox(this)">
+        <img src="images/thumb6.jpg" class="thumbnail" onclick="openLightbox(this)">
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged Image">
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bar"></div>
+    <img alt="Moda Logo" class="footer-logo" src="images/Moda-Brand.png"/>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><img alt="Facebook" class="social-icon" src="images/Asset-4.png"/></a>
+      <a href="https://www.instagram.com" target="_blank"><img alt="Instagram" class="social-icon" src="images/Asset-5.png"/></a>
+      <a href="https://www.tiktok.com" target="_blank"><img alt="TikTok" class="social-icon" src="images/Asset-6.png"/></a>
+      <a href="https://www.youtube.com" target="_blank"><img alt="YouTube" class="social-icon" src="images/Asset-7.png"/></a>
+    </div>
+    <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
+    <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').onclick = function () {
+      document.getElementById('nav-list').classList.toggle('open');
+    };
+
+    // Search bar toggle
+    document.getElementById('search-toggle').onclick = function () {
+      const bar = document.getElementById('search-bar');
+      bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
+    };
+
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle('open');
+      });
+    });
+
+    // Lightbox
+    function openLightbox(img) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = img.src;
+      lightbox.style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightboxImg = document.getElementById('lightbox-img');
+      if (lightboxImg) {
+        lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+      }
+    });
+  </script>
+</body>
+</html>

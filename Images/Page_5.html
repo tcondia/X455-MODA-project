@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="images/moda-icon.png">
+<title>Moda | Fashion & Style</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Helvetica, sans-serif;
+    }
+
+    /* Header Styles */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #888888;
+      border-bottom: 5px solid #c39fc4;
+      padding: 0 32px;
+      min-height: 72px;
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+    }
+    .logo img {
+      height: 48px;
+      display: block;
+    }
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .nav-list li a:hover {
+      color: #c39fc4;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .header-icons a, button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      outline: none;
+}
+    .search-bar {
+      display: none;
+      width: 100%;
+      background: #abc29b;
+      padding: 12px 32px;
+      border-bottom: 1px solid #888888;
+      box-sizing: border-box;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    /* RESPONSIVE STYLES */
+    @media (max-width: 900px) {
+      .nav-list {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+      }
+      .main-nav {
+        justify-content: flex-end;
+      }
+      .nav-list {
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 18px 0;
+        z-index: 1100;
+      }
+      .nav-list.open {
+        display: flex;
+      }
+      .nav-list li a {
+        font-size: 20px;
+        padding: 12px 24px;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ---- Existing styles below (background, accent lines, text overlay, footer) ---- */
+
+    /* Background Section */
+    .background-section {
+      position: relative;
+      background-image: url('images/background5.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 225vh;
+      padding-bottom: 400px;
+      box-sizing: content-box;
+    }
+    .accent-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .vertical-accent {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 209px;
+      width: 5px;
+      background-color: white;
+    }
+    .horizontal-accent {
+      position: absolute;
+      top: 50%;
+      height: 5px;
+      width: 100%;
+      background-color: white;
+      transform: translateY(-5px);
+    }
+    .white-text-box {
+      position: absolute;
+      top: 12%;
+      left: 0;
+      width: 175px;
+      height: 175px;
+      background-color: #fff;
+      opacity: 0.75;
+      font-family: Times, serif;
+      font-weight: lighter;
+      color: #000;
+      font-size: 30px;
+      line-height: 1.2;
+      transform: translateY(-195px);
+      margin: 5px;
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 0;
+    }
+    .text-overlay-box {
+       position: absolute;
+      top: 60%;
+      left: 0;
+      background-color: #c39fc4;;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      color: white;
+      font-family: Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: lighter;
+      line-height: 1.4;
+      padding: 24px;
+      width: 850px;
+      max-width: 90%;
+      box-sizing: border-box;
+      z-index: 1;
+    }
+
+    .text-overlay-box a {
+  color: white !important;
+  text-decoration: underline;
+}
+    .accordion {
+      position: absolute;
+      top:20%;
+      margin: 5px;
+      border: 1px solid #ccc;
+      background-color: #888888;
+      width: 475px;
+      max-width: 100%;
+      pointer-events: auto;
+      z-index: 9999;
+    }
+
+@media only screen and (max-width: 768px) {
+  .text-overlay-box {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    padding: 16px 12px;
+    font-size: 16px;
+  }
+}
+
+    .accordion-item + .accordion-item {
+      border-top: 1px solid #ccc;
+    }
+    .accordion-header {
+      width: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: left;
+      background: #888888;
+      border: none;
+      outline: none;
+      padding: 1em;
+      border-radius: 4px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+      font-size: 17px;
+      line-height: 1.2;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .accordion-header:hover {
+      background: #eee;
+    }
+    .accordion-content {
+      display: none;
+      padding: 1em;
+      background: #fff;
+    }
+    .accordion-content.open {
+      display: block;
+    }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .accordion-header {
+    font-size: 1rem;
+    padding: 0.75em;
+  }
+  .accordion-content {
+    font-size: 0.9rem;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .accordion {
+    max-width: 90%;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .accordion {
+    max-width: 80%;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .accordion {
+    max-width: 600px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .accordion {
+    max-width: 600px;
+  }
+}
+/* ---------- BASE GALLERY & LIGHT-BOX STYLES ---------- */
+.gallery{
+  display:grid;
+  gap:10px;
+  padding:115px;
+  max-width:1200px;
+  margin:0 auto;
+  /* phones first: two columns */
+  grid-template-columns:repeat(2,1fr);
+}
+.thumbnail{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border:2px solid #ccc;
+  border-radius:4px;
+  cursor:pointer;
+  transition:transform .2s;
+}
+.thumbnail:hover{ transform:scale(1.03); }
+
+/* Lightbox styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+    /* Footer Section */
+    .site-footer {
+      height: 120px;
+      background-color: #888888;
+      border-top: 5px solid #c39fc4;
+      position: relative;
+      width: 100%;
+    }
+    .footer-bar {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      right: 418px;
+      background-color: #c39fc4;
+    }
+    .footer-logo {
+      position: absolute;
+      right: calc(209px - 90px);
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60px;
+    }
+    .footer-contact {
+      position: absolute;
+      bottom: 55px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    }
+    .lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 6px;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 40px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: 35px;
+      right: 500px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      transition: opacity 0.2s ease;
+    }
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+    /* Mobile Styles for Footer & Background */
+    @media (max-width: 768px) {
+      .background-section {
+        min-height: 100vh;
+        height: auto;
+        padding: 110px 8px 60px 8px;
+        box-sizing: border-box;
+      }
+      .accent-lines { display: yes; }
+      .text-overlay-box {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 120px;
+        height: auto;
+        background-color: #888888;
+        padding: 16px 10px;
+        font-size: 16px;
+        transform: none;
+        top: auto;
+        left: auto;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .site-footer {
+        position: relative;
+        padding: 20px 8px;
+        height: auto;
+        min-height: 160px;
+      }
+      .footer-logo,
+      .footer-bar { display: none; }
+      .footer-contact,
+      .footer-text {
+        position: static;
+        text-align: center;
+        font-size: 14px;
+        margin: 8px 0 0 0;
+        width: 100%;
+      }
+      .footer-contact { margin-top: 16px; }
+      .social-icons {
+        position: static;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin: 16px 0 0 0;
+        width: 100%;
+      }
+      .social-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="/Users/acondia/Desktop/ModaWebsite/index.html">
+        <img src="images/Moda-Brand.png" alt="Moda">
+      </a>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_2.html">Designers</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_3.html">Apparel</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_4.html">Fashion</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_5.html">Magazine</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_6.html">Videos</a></li>
+      </ul>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">&#9776;</button>
+    </nav>
+    <div class="header-icons">
+      <button id="search-toggle" aria-label="Toggle search">
+        <img src="images/Search-Icon.png" alt="Search" style="height: 22px;">
+      </button>
+      <a href="/cart.html" aria-label="Shopping Cart">
+        <img src="images/White-Cart.png" alt="Cart" style="height: 22px;">
+      </a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Search Moda...">
+  </div>
+
+  <!-- Main Content -->
+<main>
+  <div class="background-section">
+    
+    <section class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-header">Moda Video Series | Inside Yohji Yamamoto's Fashion Philosophy</button>
+        <div class="accordion-content">
+          <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/pSJsqYH-hK4?si=FhEip9PxHH8JeN1N" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Moda Video Series | 73 Questions with Anna Wintour</button>
+        <div class="accordion-content">
+                <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/MhXwO_mkdzQ?si=sIe6HT8CWE3ci097"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Moda Video Series | Pharrell Opens Up About Louis Vuitton, Dreams & Fashion Design</button>
+        <div class="accordion-content">
+          <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/Odyf5bCppKI?si=HFyVtAEkVjGyBn7w" 
+          title="YouTube video player" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+    <div class="accent-lines">
+      <div class="vertical-accent"></div>
+      <div class="horizontal-accent"></div>
+
+      <div class="white-text-box">
+        Magazine
+      </div>
+
+      <div class="text-overlay-box">
+        <div>
+          <p>
+          Fashion Scene is the bold, stylish voice of Moda—a magazine that captures the pulse of fashion, culture, and creativity around the world. 
+          With a sharp eye for what's next and a reverence for what endures, Fashion Scene brings together emerging designers, iconic tastemakers, 
+          and the visual storytellers shaping how we dress and express ourselves. Each issue is a curated experience, blending runway reportage with 
+          behind-the-scenes access, in-depth features, and striking editorial photography.<br><br>
+
+          Whether it’s spotlighting sustainable ateliers in Paris, decoding the digital couture 
+          revolution, or exploring the intersections of fashion and art in Tokyo, Fashion Scene delivers global 
+          style with edge and intellect. But it’s more than just a magazine—it’s Moda’s manifesto. A platform for 
+          fresh perspectives. A showcase for boundary-pushing design. And a love letter to those who believe fashion is more than fabric—it’s a way of seeing and being.<br><br>
+
+          Printed quarterly and powered by Moda’s fearless spirit, Fashion Scene invites readers to 
+          step into a world where aesthetic meets meaning, and every page tells a story worth wearing.<br><br>
+
+          <a href="images/Moda Magazine Issue 1.jpeg" target="_blank">Download our inaugural issue.</a>
+          </p>
+        </div>
+      </div>
+<div class="gallery">
+  <img src="Images/thumb1.jpg" class="thumbnail" onclick="openLightbox(this)">
+  <img src="Images/thumb2.jpg" class="thumbnail" onclick="openLightbox(this)">
+  <img src="Images/thumb3.jpg" class="thumbnail" onclick="openLightbox(this)">
+  <img src="Images/thumb4.jpg" class="thumbnail" onclick="openLightbox(this)">
+  <img src="Images/thumb5.jpg" class="thumbnail" onclick="openLightbox(this)">
+  <img src="Images/thumb6.jpg" class="thumbnail" onclick="openLightbox(this)">
+</div>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Enlarged Image">
+</div>
+    </div>
+  </div>
+</main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bar"></div>
+    <img src="images/Moda-Brand.png" alt="Moda Logo" class="footer-logo">
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="images/Asset-4.png" alt="Facebook" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="images/Asset-5.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="images/Asset-6.png" alt="TikTok" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="images/Asset-7.png" alt="YouTube" class="social-icon">
+      </a>
+    </div>
+
+    <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
+    <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
+  </footer>
+
+<!-- JavaScript for toggling mobile menu, search, accordion, and lightbox -->
+<script>
+  // Hamburger menu toggle
+  document.getElementById('menu-toggle').onclick = function () {
+    document.getElementById('nav-list').classList.toggle('open');
+  };
+
+  // Search bar toggle
+  document.getElementById('search-toggle').onclick = function () {
+    const bar = document.getElementById('search-bar');
+    bar.style.display = (bar.style.display === 'none') ? 'none' : 'block';
+  };
+
+  // Accordion
+  document.querySelectorAll('.accordion-header').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      content.classList.toggle('open');
+    });
+  });
+
+  // Lightbox
+  function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  // Prevent clicking the image itself from closing the lightbox
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightboxImg = document.getElementById('lightbox-img');
+    if (lightboxImg) {
+      lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+    }
+  });
+</script>
+</body>
+</html>

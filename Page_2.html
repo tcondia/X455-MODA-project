@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images/moda-icon.png">
+  <title>Moda | Designers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background: #e8e6e3;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #888888;
+      border-bottom: 5px solid #c39fc4;
+      padding: 0 32px;
+      min-height: 72px;
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+    }
+    .logo img {
+      height: 48px;
+      display: block;
+    }
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .nav-list li a:hover {
+      color: #c39fc4;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      z-index: 1200;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header-icons a, .header-icons button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      outline: none;
+    }
+    .search-bar {
+      display: none;
+      width: 100%;
+      background: #abc29b;
+      padding: 12px 32px;
+      border-bottom: 1px solid #888888;
+      box-sizing: border-box;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* Center hamburger on mobile */
+    @media (max-width: 800px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+        position: relative;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        margin-left: 0;
+      }
+      .main-nav {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-list {
+        display: none !important;
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: 18px 0;
+        z-index: 1100;
+      }
+      .nav-list.open {
+        display: flex !important;
+      }
+      .nav-list li a {
+        font-size: 15px;
+        padding: 12px 24px;
+      }
+    }
+
+    /* Designers Section */
+    .main-content {
+      min-height: 70vh;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-image: url('images/background4reduced.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .text-overlay-box {
+      background-color: #888888ee;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      align-items: flex-start;
+      justify-content: center;
+      box-sizing: border-box;
+      width: 900px;
+      max-width: 95vw;
+      padding: 40px 32px;
+      margin: 48px 0 32px 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 24px #0002;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 320px;
+      max-width: 98vw;
+      gap: 16px;
+      flex: 1 1 320px;
+    }
+
+    .headshot {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin-bottom: 0;
+      background: #eee;
+      box-shadow: 0 2px 8px #0001;
+    }
+
+    .bio {
+      background: #fff;
+      color: #111;
+      font-size: 18px;
+      line-height: 1.45;
+      padding: 16px 18px;
+      border-radius: 12px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 280px;
+      min-width: 150px;
+      overflow-y: auto;
+      max-height: 200px;
+      box-shadow: 0 1px 6px #0002;
+    }
+
+    /* Scroll Box Styles (for all devices) */
+    .scrollBox {
+      box-sizing: border-box;
+      background-color: #abc29b;
+      overflow-y: auto;
+      padding: 18px 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: lighter;
+      text-align: justify;
+      color: #000;
+      font-size: 19px;
+      line-height: 1.5;
+      border-radius: 12px;
+      width: 900px;
+      max-width: 95vw;
+      min-height: 80px;
+      max-height: 160px;
+      margin: 0 auto 40px auto;
+      box-shadow: 0 1px 6px #0001;
+    }
+
+    @media (max-width: 1100px) {
+      .text-overlay-box {
+        width: 98vw;
+        gap: 24px;
+        padding: 32px 2vw;
+      }
+      .profile {
+        width: 280px;
+        max-width: 98vw;
+      }
+      .bio {
+        max-width: 98vw;
+      }
+      .scrollBox {
+        width: 96vw;
+        max-width: 96vw;
+        padding: 16px 2vw;
+        font-size: 17px;
+      }
+    }
+    @media (max-width: 900px) {
+      .main-content {
+        padding-top: 32px;
+        padding-bottom: 24px;
+      }
+      .text-overlay-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        width: 98vw;
+        padding: 24px 2vw;
+        margin: 28px 0 18px 0;
+      }
+      .profile {
+        width: 94vw;
+        max-width: 500px;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 18px;
+      }
+      .headshot {
+        width: 100px;
+        height: 100px;
+      }
+      .bio {
+        font-size: 16px;
+        padding: 10px 10px;
+        max-width: 70vw;
+        max-height: 130px;
+      }
+      .scrollBox {
+        width: 98vw;
+        max-width: 98vw;
+        font-size: 16px;
+        max-height: 110px;
+        margin: 24px auto 32px auto;
+      }
+    }
+    @media (max-width: 650px) {
+      .text-overlay-box {
+        padding: 12px 0.5vw;
+        gap: 20px;
+      }
+      .profile {
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        gap: 8px;
+      }
+      .headshot {
+        width: 70px;
+        height: 70px;
+      }
+      .bio {
+        font-size: 14px;
+        max-width: 95vw;
+        max-height: 95px;
+        padding: 8px 4px;
+      }
+      .scrollBox {
+        font-size: 15px;
+        max-width: 99vw;
+        width: 99vw;
+        padding: 10px 2vw;
+        max-height: 70px;
+      }
+    }
+    /* Footer Section */
+    .site-footer {
+      height: 120px;
+      background-color: #888888;
+      border-top: 5px solid #c39fc4;
+      position: relative;
+      width: 100%;
+    }
+    .footer-bar {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      right: 418px;
+      background-color: #c39fc4;
+    }
+    .footer-logo {
+      position: absolute;
+      right: calc(209px - 90px);
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60px;
+    }
+    .footer-contact {
+      position: absolute;
+      bottom: 55px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 40px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: 35px;
+      right: 500px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      transition: opacity 0.2s ease;
+    }
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+    @media only screen and (max-width: 750px) {
+      .site-footer {
+        position: static;
+        height: auto;
+        padding: 20px 8px 16px 8px;
+        text-align: center;
+      }
+      .footer-contact, .footer-text {
+        display: none;
+      }
+      .footer-logo, .footer-bar {
+        position: static;
+        display: block;
+        margin: 8px auto 0 auto;
+        left: unset;
+        right: unset;
+        top: unset;
+        transform: none;
+        height: 40px;
+        max-width: 90vw;
+      }
+      .social-icons {
+        position: static;
+        justify-content: center;
+        margin: 16px 0 0 0;
+      }
+      .social-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="/Users/acondia/Desktop/ModaWebsite/index.html">
+        <img src="images/Moda-Brand.png" alt="Moda">
+      </a>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_2.html">Designers</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_3.html">Apparel</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_4.html">Fashion</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_5.html">Magazine</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_6.html">Videos</a></li>
+      </ul>
+      <button aria-label="Open menu" class="menu-toggle" id="menu-toggle">☰</button>
+    </nav>
+    <div class="header-icons">
+      <button aria-label="Toggle search" id="search-toggle">
+        <img alt="Search" src="images/Search-Icon.png" style="height: 22px;"/>
+      </button>
+      <a aria-label="Shopping Cart" href="/cart.html">
+        <img alt="Cart" src="images/White-Cart.png" style="height: 22px;"/>
+      </a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input placeholder="Search Moda..." type="text"/>
+  </div>
+
+  <!-- Designers Section -->
+  <main class="main-content">
+    <div class="text-overlay-box">
+      <div class="profile">
+        <img src="images/Moretti.jpg" alt="Designer 1 headshot" class="headshot">
+        <div class="bio">
+          <p><strong>Lucia Moretti</strong><br>
+          Lucia is the creative mind behind Studio Moretti, blending Milanese minimalism with modern streetwear influences. Her approach is a seamless mix of high fashion tailoring and functional comfort, creating garments that move with you. Lucia’s designs have been featured in Vogue Italia and on runways from Paris to Tokyo.</p>
+        </div>
+      </div>
+      <div class="profile">
+        <img src="images/ChenReduced.jpg" alt="Designer 2 headshot" class="headshot">
+        <div class="bio">
+          <p><strong>Amara Chen</strong><br>
+          Amara Chen is the founder and lead designer of CHEN Line, a brand known for its eco-conscious materials and bold prints inspired by the landscapes of Southeast Asia. Amara’s philosophy is rooted in sustainable beauty—every piece balances innovation, tradition, and a vibrant sense of individuality.</p>
+        </div>
+      </div>
+    </div>
+    <!-- SCROLL BOX -->
+    <div class="scrollBox">
+      <strong>Featured Spotlight:</strong><br>
+      Moda’s designers are not only redefining contemporary style, but also championing sustainability and global influence. Explore our exclusive interviews, behind-the-scenes moments, and the inspirations driving our creative leaders. Whether you’re seeking timeless elegance or daring new trends, Moda brings the world of high fashion to your fingertips.
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bar"></div>
+    <img alt="Moda Logo" class="footer-logo" src="images/Moda-Brand.png"/>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank"><img alt="Facebook" class="social-icon" src="images/Asset-4.png"/></a>
+      <a href="https://www.instagram.com" target="_blank"><img alt="Instagram" class="social-icon" src="images/Asset-5.png"/></a>
+      <a href="https://www.tiktok.com" target="_blank"><img alt="TikTok" class="social-icon" src="images/Asset-6.png"/></a>
+      <a href="https://www.youtube.com" target="_blank"><img alt="YouTube" class="social-icon" src="images/Asset-7.png"/></a>
+    </div>
+    <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
+    <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').onclick = function () {
+      document.getElementById('nav-list').classList.toggle('open');
+    };
+
+    // Search bar toggle
+    document.getElementById('search-toggle').onclick = function () {
+      const bar = document.getElementById('search-bar');
+      bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="images/moda-icon.png">
+<title>Moda | Fashion & Style</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  background: #fff;
+}
+a {
+  color: white;
+  text-decoration: underline;
+}
+   .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #888888;
+      border-bottom: 5px solid #c39fc4;
+      padding: 0 32px;
+      min-height: 72px;
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+    }
+    .logo img {
+      height: 48px;
+      display: block;
+    }
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .nav-list li a:hover {
+      color: #c39fc4;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header-icons a, .header-icons button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      outline: none;
+    }
+    .search-bar {
+      display: none;
+      width: 100%;
+      background: #abc29b;
+      padding: 12px 32px;
+      border-bottom: 1px solid #888888;
+      box-sizing: border-box;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    /* RESPONSIVE STYLES */
+    @media (max-width: 900px) {
+      .nav-list {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 800px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+        position: relative;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        margin-left: 0;
+      }
+      .main-nav {
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-list {
+        display: none !important;
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: 18px 0;
+        z-index: 1100;
+      }
+      .nav-list.open {
+        display: flex !important;
+      }
+      .nav-list li a {
+        font-size: 15px;
+        padding: 12px 24px;
+      }
+    }
+/* Main background and overlay */
+.background-section {
+  position: relative;
+  background-image: url('images/background3reduced.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 225vh;
+  padding-bottom: 400px;
+  box-sizing: content-box;
+}
+.accent-lines {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: auto;
+}
+.vertical-accent {
+  position: absolute; top: 0; bottom: 0; right: 209px; width: 5px;
+  background-color: white; z-index: 2;
+}
+.horizontal-accent {
+  position: absolute; top: 50%; height: 5px; width: 100%;
+  background-color: white; transform: translateY(-5px);
+}
+.white-text-box {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  width: 175px;
+  height: 175px;
+  background-color: #fff;
+  font-family: Times, serif;
+  font-weight: lighter;
+  color: #000;
+  font-size: 30px;
+  line-height: 1.2;
+  transform: translateY(-195px);
+  margin: 5px;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 0;
+}
+.upper-text-box {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 375px;
+  background-color: #c39fc4;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  padding: 24px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+/* Force upper-text-box left on desktop/tablet */
+@media only screen and (min-width: 600px) {
+  .upper-text-box {
+    left: 0;
+    right: auto;
+    margin: 0;
+    position: absolute;
+    width: 375px;
+    max-width: 375px;
+  }
+}
+/* Carousel & Profile */
+.text-overlay-box {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 32px;
+  background-color: rgba(171, 194, 155, 0.75);
+  color: white;
+  font-family: Helvetica, sans-serif;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 1.4;
+  position: absolute;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  top: calc(50% + 2px);
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.headshot {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.bio { flex: 1; }
+/* Responsive carousel image */
+.w3-content {
+  width: 400px !important;
+  max-width: 100vw;
+}
+/* Table styles */
+.table-responsive { overflow-x: auto; }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  max-width: 100vw;
+  background: transparent;
+  margin: 0 auto 32px auto;
+  font-size: 16px;
+  overflow-x: auto;
+}
+th, td {
+  text-align: center;
+  padding: 16px;
+  word-break: break-word;
+}
+th:first-child, td:first-child {
+  text-align: left;
+}
+tr:nth-child(even) {
+  background-color: #c39fc4;
+  opacity: .75;
+}
+tr:nth-child(odd) {
+  background-color: #888888;
+  opacity: .75;
+}
+.fa-check, .fa-remove {
+  color: #fff;
+}
+.sortable {
+  cursor: pointer;
+  position: relative;
+}
+.sortable::after {
+  content: ' ⇅';
+  font-size: 14px;
+  color: #333;
+}
+/* Footer Section */
+.site-footer {
+  height: 120px;
+  background-color: #888888;
+  border-top: 5px solid #c39fc4;
+  position: relative;
+  width: 100%;
+}
+.footer-bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  right: 418px;
+  background-color: #c39fc4;
+}
+.footer-logo {
+  position: absolute;
+  right: calc(209px - 90px);
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60px;
+}
+.footer-contact, .footer-text {
+  position: absolute;
+  color: white;
+  font-size: 15px;
+  font-family: Helvetica, sans-serif;
+  font-weight: lighter;
+  margin: 0;
+}
+.footer-contact { bottom: 55px; left: 12px; }
+.footer-text { bottom: 40px; left: 12px; }
+.social-icons {
+  position: absolute;
+  bottom: 35px;
+  right: 500px;
+  display: flex;
+  gap: 16px;
+}
+.social-icon {
+  width: 36px;
+  height: 36px;
+  transition: opacity 0.2s ease;
+}
+.social-icon:hover { opacity: 0.7; }
+
+@media only screen and (max-width: 750px) {
+      
+      .background-section {
+        position: relative;
+        background-image: url('images/background3reduced.jpg');
+        background-size: contain;
+        background-color: #000;
+        background-repeat: no-repeat;
+        height: 225vh;
+        padding-bottom: 400px;
+        box-sizing: content-box;
+      }  
+  
+      .white-text-box {
+        position: absolute;
+        top: 12%;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: #fff;
+        font-family: Times, serif;
+        font-weight: lighter;
+        color: #000;
+        font-size: 20px;
+        line-height: 1.2;
+        transform: translateY(-195px);
+        margin: 5px;
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 0;
+      }
+
+      .text-overlay-box {
+        margin: 20px 0 10px 0;
+        padding: 10px 2vw;
+        font-size: 14px;
+        width: 100vw;
+        max-width: 100vw;
+        border-radius: 11px;
+      }
+      .profile {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .w3-content {
+        width: 98vw !important;
+        max-width: 98vw;
+      }
+      table {
+        font-size: 13px;
+        max-width: 98vw;
+      }
+      th, td { padding: 9px; }
+      .site-footer {
+        position: static;
+        height: auto;
+        padding: 20px 8px 16px 8px;
+        text-align: center;
+      }
+      .footer-contact, .footer-text { display: none; }
+      .footer-logo, .footer-bar {
+        position: static;
+        display: block;
+        margin: 8px auto 0 auto;
+        left: unset; right: unset; top: unset; transform: none;
+        height: 40px; max-width: 90vw;
+      }
+      .social-icons {
+        position: static;
+        justify-content: center;
+        margin: 16px 0 0 0;
+      }
+      .social-icon { width: 25px; height: 25px; }
+    }
+</style>
+
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+        <div class="logo">
+      <a href="/Users/acondia/Desktop/ModaWebsite/index.html">
+        <img src="images/Moda-Brand.png" alt="Moda">
+      </a>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_2.html">Designers</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_3.html">Apparel</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_4.html">Fashion</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_5.html">Magazine</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_6.html">Videos</a></li>
+      </ul>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">&#9776;</button>
+    </nav>
+    <div class="header-icons">
+      <button id="search-toggle" aria-label="Toggle search">
+        <img src="images/Search-Icon.png" alt="Search" style="height: 22px;">
+      </button>
+      <a href="/cart.html" aria-label="Shopping Cart">
+        <img src="images/White-Cart.png" alt="Cart" style="height: 22px;">
+      </a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Search Moda...">
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <div class="background-section">
+      <div class="accent-lines">
+        <div class="vertical-accent"></div>
+        <div class="horizontal-accent"></div>
+        <div class="white-text-box">
+          Apparel
+        </div>
+        <div class="upper-text-box">
+            <p>Moda’s apparel collection blends elevated essentials with bold statement pieces for every style. From effortless daywear to 
+              refined evening looks, each item is curated for its quality, versatility, and modern appeal. Whether you lean minimalist or expressive, 
+              Moda offers a mix of iconic labels and rising designers. With seasonal drops and exclusive collections, this is your destination for timeless 
+              pieces that inspire and empower. <a href="https://www.sezane.com/us-en" target="_blank">Shop our designer labels.</a></p></p>
+          </div>
+    <div style="display: flex; justify-content: center; gap: 24px;"></div>
+       <div class="text-overlay-box">
+          <div class="profile">
+                 <!-- Carousel -->
+            <div>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+              <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+              <style>
+              .mySlides {display:none;}
+              </style>
+
+              <div class="w3-content w3-section" style="width:400px">
+                <img class="mySlides" src="images/Rotator1.jpg" style="width:100%">
+                <img class="mySlides" src="images/Rotator2.png" style="width:100%">
+                <img class="mySlides" src="images/Rotator3.jpg" style="width:100%">
+                <img class="mySlides" src="images/Rotator4.jpg" style="width:100%">
+              </div>
+
+              <script>
+              var myIndex = 0;
+              carousel();
+
+              function carousel() {
+              var i;
+              var x = document.getElementsByClassName("mySlides");
+              for (i = 0; i < x.length; i++) {
+              x[i].style.display = "none";  
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}    
+              x[myIndex-1].style.display = "block";  
+              setTimeout(carousel, 5000); // Change image every 5 seconds
+              }
+              </script>
+          </div>
+            <div class="bio">
+             <p>Moda brought its signature edge to New York Fashion Week, debuting a capsule collection that balanced downtown grit 
+              with elevated elegance. The presentation, staged in a SoHo loft with panoramic city views, featured streamlined silhouettes, 
+              sharp tailoring, and tonal palettes punctuated by flashes of metallics. The collection felt distinctly New York—confident, complex, 
+              and unapologetically bold. Each piece told a story of movement and momentum, capturing the rhythm of the city in every hemline and fold.
+              As we continue to expand our brand and products, we do so with a firm commitment to using only the finest, sustainable materials harvested 
+              using the most eco-friendly processes to bring our products to market.</p>
+            </div>
+          </div>
+
+          <!-- Font Awesome Icon Library -->
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+          <div style="overflow-x:auto;">
+          <table id="table">
+          <!--When a header is clicked, run the sortTable function, with a parameter,
+          0 for sorting by Fabric, 3 for sorting by Eco Rating -->
+            <tr>
+                <th class="sortable" style="width:30%" onclick="sortTable(0)">Fabric</th>
+                <th class="sortable" onclick="sortTable(1)">Description</th>
+                <th class="sortable" onclick="sortTable(2)">Common Use</th>
+                <th class="sortable" onclick="sortTable(3)">Eco Rating</th>
+                <th class="sortable" onclick="sortTable(4)">Origin</th>
+                <th class="sortable" onclick="sortTable(5)">Fair Trade</th>
+              </tr>
+              <tr>
+                <td>Tencel</td>
+                <td>Soft, breathable, sustainable</td>
+                <td>Dresses, shirts</td>
+                <td>10</td>
+                <td>Austria</td>
+                <td><i class="fa fa-remove"></i></td>
+              </tr>
+              <tr>
+                <td>Organic Cotton</td>
+                <td>Grown without pesticides</td>
+                <td>Everyday wear</td>
+                <td>1</td>
+                <td>USA, India</td>
+                <td><i class="fa fa-check"></i></td>
+              </tr>
+              <tr>
+                <td>Modal</td>
+                <td>Semi-synthetic, silky feel</td>
+                <td>Casual loungewear</td>
+                <td>3</td>
+                <td>Europe</td>
+                <td><i class="fa fa-check"></i></td>
+              </tr>
+              <tr>
+                <td>Recycled Polyester</td>
+                <td>Plastic-based, repurposed</td>
+                <td>Activewear</td>
+                <td>2</td>
+                <td>Global</td>
+                <td><i class="fa fa-check"></i></td>
+              </tr>
+          </table>
+
+        </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bar"></div>
+    <img src="images/Moda-Brand.png" alt="Moda Logo" class="footer-logo">
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="images/Asset-4.png" alt="Facebook" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="images/Asset-5.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="images/Asset-6.png" alt="TikTok" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="images/Asset-7.png" alt="YouTube" class="social-icon">
+      </a>
+    </div>
+
+    <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
+    <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
+  </footer>
+
+  <!-- JavaScript for toggling mobile menu and search -->
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').onclick = function () {
+      document.getElementById('nav-list').classList.toggle('open');
+    };
+    // Search bar toggle
+    document.getElementById('search-toggle').onclick = function () {
+      const bar = document.getElementById('search-bar');
+      bar.style.display = (bar.style.display === 'none') ? 'none' : 'block';
+    };
+  </script>
+
+<!-- JavaScript for sorting table -->
+
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("table");
+  switching = true;
+  // Set the sorting direction to ascending:
+  dir = "asc";
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /* Loop through all table rows (except the
+    first, which contains table headers): */
+    for (i = 1; i < (rows.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Get the two elements you want to compare,
+      one from current row and one from the next: */
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /* Check if the two rows should switch place,
+      based on the direction, asc or desc: */
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          // If so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark that a switch has been done: */
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      // Each time a switch is done, increase this count by 1:
+      switchcount ++;
+    } else {
+      /* If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again. */
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>

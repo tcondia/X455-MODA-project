@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" type="image/png" href="images/moda-icon.png">
+<title>Moda | Fashion & Style</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Helvetica, sans-serif;
+    }
+
+    /* Header Styles */
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #888888;
+      border-bottom: 5px solid #c39fc4;
+      padding: 0 32px;
+      min-height: 72px;
+      width: 100%;
+      box-sizing: border-box;
+      position: sticky;
+      top: 0;
+    }
+    .logo img {
+      height: 48px;
+      display: block;
+    }
+    .main-nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: lighter;
+    }
+    .nav-list li a:hover {
+      color: #c39fc4;
+    }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .header-icons a, button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      outline: none;
+}
+    .search-bar {
+      display: none;
+      width: 100%;
+      background: #abc29b;
+      padding: 12px 32px;
+      border-bottom: 1px solid #888888;
+      box-sizing: border-box;
+    }
+    .search-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    /* RESPONSIVE STYLES */
+    @media (max-width: 900px) {
+      .nav-list {
+        gap: 16px;
+      }
+    }
+    @media (max-width: 700px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+      }
+      .main-nav {
+        justify-content: flex-end;
+      }
+      .nav-list {
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        display: none;
+        padding: 18px 0;
+        z-index: 1100;
+      }
+      .nav-list.open {
+        display: flex;
+      }
+      .nav-list li a {
+        font-size: 20px;
+        padding: 12px 24px;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ---- Existing styles below (background, accent lines, text overlay, footer) ---- */
+
+    /* Background Section */
+    .background-section {
+      position: relative;
+      background-image: url('images/background6.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 225vh;
+      padding-bottom: 400px;
+      box-sizing: content-box;
+    }
+    .accent-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .vertical-accent {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 209px;
+      width: 5px;
+      background-color: white;
+    }
+    .horizontal-accent {
+      position: absolute;
+      top: 50%;
+      height: 5px;
+      width: 100%;
+      background-color: white;
+      transform: translateY(-5px);
+    }
+    .white-text-box {
+      position: absolute;
+      top: 12%;
+      left: 0;
+      width: 175px;
+      height: 175px;
+      background-color: #fff;
+      opacity: 0.75;
+      font-family: Times, serif;
+      font-weight: lighter;
+      color: #000;
+      font-size: 30px;
+      line-height: 1.2;
+      transform: translateY(-195px);
+      margin: 5px;
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 0;
+    }
+    .text-overlay-box {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 850px;
+      height: 190px;
+      background-color: #888888;
+      display: flex;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      align-items: center;
+      text-align: justify;
+      color: white;
+      font-size: 18px;
+      line-height: 1.2;
+      z-index: 1;
+      transform: translateY(-195px);
+      box-sizing: border-box;
+      margin: 10;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    /* Footer Section */
+    .site-footer {
+      height: 120px;
+      background-color: #888888;
+      border-top: 5px solid #c39fc4;
+      position: relative;
+      width: 100%;
+    }
+    .footer-bar {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5px;
+      right: 418px;
+      background-color: #c39fc4;
+    }
+    .footer-logo {
+      position: absolute;
+      right: calc(209px - 90px);
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60px;
+    }
+    .footer-contact {
+      position: absolute;
+      bottom: 55px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .footer-text {
+      position: absolute;
+      bottom: 40px;
+      left: 12px;
+      color: white;
+      font-size: 15px;
+      font-family: Helvetica, sans-serif;
+      font-weight: lighter;
+      margin: 0;
+    }
+    .social-icons {
+      position: absolute;
+      bottom: 35px;
+      right: 500px;
+      display: flex;
+      gap: 16px;
+    }
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      transition: opacity 0.2s ease;
+    }
+    .social-icon:hover {
+      opacity: 0.7;
+    }
+    /* Mobile Styles for Footer & Background */
+    @media (max-width: 768px) {
+      .background-section {
+        min-height: 100vh;
+        height: auto;
+        padding: 110px 8px 60px 8px;
+        box-sizing: border-box;
+      }
+      .accent-lines { display: yes; }
+      .text-overlay-box {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 120px;
+        height: auto;
+        background-color: #888888;
+        padding: 16px 10px;
+        font-size: 16px;
+        transform: none;
+        top: auto;
+        left: auto;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      .site-footer {
+        position: relative;
+        padding: 20px 8px;
+        height: auto;
+        min-height: 160px;
+      }
+      .footer-logo,
+      .footer-bar { display: none; }
+      .footer-contact,
+      .footer-text {
+        position: static;
+        text-align: center;
+        font-size: 14px;
+        margin: 8px 0 0 0;
+        width: 100%;
+      }
+      .footer-contact { margin-top: 16px; }
+      .social-icons {
+        position: static;
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin: 16px 0 0 0;
+        width: 100%;
+      }
+      .social-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <a href="/Users/acondia/Desktop/ModaWebsite/index.html">
+        <img src="images/Moda-Brand.png" alt="Moda">
+      </a>
+    </div>
+    <nav class="main-nav" id="main-nav">
+      <ul class="nav-list" id="nav-list">
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_2.html">Designers</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_3.html">Apparel</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_4.html">Fashion</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_5.html">Magazine</a></li>
+        <li><a href="/Users/acondia/Desktop/ModaWebsite/Page_6.html">Videos</a></li>
+      </ul>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">&#9776;</button>
+    </nav>
+    <div class="header-icons">
+      <button id="search-toggle" aria-label="Toggle search">
+        <img src="images/Search-Icon.png" alt="Search" style="height: 22px;">
+      </button>
+      <a href="/cart.html" aria-label="Shopping Cart">
+        <img src="images/White-Cart.png" alt="Cart" style="height: 22px;">
+      </a>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar" id="search-bar">
+    <input type="text" placeholder="Search Moda...">
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <div class="background-section">
+      <div class="accent-lines">
+        <div class="vertical-accent"></div>
+        <div class="horizontal-accent"></div>
+                <div class="white-text-box">
+          Videos
+        </div>
+        <div class="text-overlay-box">
+          <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, Moda is where fashion lives, moves, and evolves.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-bar"></div>
+    <img src="images/Moda-Brand.png" alt="Moda Logo" class="footer-logo">
+
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="images/Asset-4.png" alt="Facebook" class="social-icon">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="images/Asset-5.png" alt="Instagram" class="social-icon">
+      </a>
+      <a href="https://www.tiktok.com" target="_blank">
+        <img src="images/Asset-6.png" alt="TikTok" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com" target="_blank">
+        <img src="images/Asset-7.png" alt="YouTube" class="social-icon">
+      </a>
+    </div>
+
+    <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
+    <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
+  </footer>
+
+  <!-- JavaScript for toggling mobile menu and search -->
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('menu-toggle').onclick = function () {
+      document.getElementById('nav-list').classList.toggle('open');
+    };
+    // Search bar toggle
+    document.getElementById('search-toggle').onclick = function () {
+      const bar = document.getElementById('search-bar');
+      bar.style.display = (bar.style.display === 'none') ? 'none' : 'block';
+    };
+  </script>
+</body>
+</html>
