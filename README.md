@@ -1,1 +1,1 @@
-This is a UC Berekely Extension web design and coding project that is required as part of the Program in Professional Design. MODA is a fashion brand that I created for this particular project (and other design-related projectes.)
+This is a UC Berekely Extension web design and coding project that is required as part of the Program in Professional Design. MODA is a fashion brand that I created for this particular project (and other design-related projects in other courses.)
