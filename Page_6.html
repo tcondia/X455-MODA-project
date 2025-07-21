@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/png" href="images/moda-icon.png">
 <title>Moda | Fashion & Style</title>
 <head>
+  <link rel="icon" type="image/png" href="images/moda-icon.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: Helvetica, sans-serif;
+      padding: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background: #abc29b;
+      overflow-x: hidden;
+  
     }
-
     /* Header Styles */
     .site-header {
       display: flex;
@@ -94,121 +97,145 @@
       border: 1px solid #ccc;
     }
     /* RESPONSIVE STYLES */
+   /* RESPONSIVE STYLES */
     @media (max-width: 900px) {
       .nav-list {
         gap: 16px;
       }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       .site-header {
         flex-wrap: wrap;
         padding: 0 14px;
         min-height: 56px;
+        position: relative;
+      }
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        margin-left: 0;
       }
       .main-nav {
-        justify-content: flex-end;
+        width: 100%;
+        justify-content: center;
       }
       .nav-list {
+        display: none !important;
         flex-direction: column;
         background: #888888;
         position: absolute;
-        top: 60px;
+        top: 56px;
         left: 0;
         right: 0;
-        display: none;
         padding: 18px 0;
         z-index: 1100;
       }
       .nav-list.open {
-        display: flex;
+        display: flex !important;
       }
       .nav-list li a {
-        font-size: 20px;
+        font-size: 15px;
         padding: 12px 24px;
       }
-      .menu-toggle {
-        display: block;
-      }
     }
-
     /* ---- Existing styles below (background, accent lines, text overlay, footer) ---- */
 
     /* Background Section */
-    .background-section {
+
+      .background-section {
       position: relative;
-      background-image: url('images/background6.jpg');
+      background-image: url('images/newbackground6.jpg');
       background-size: cover;
       background-repeat: no-repeat;
-      height: 225vh;
-      padding-bottom: 400px;
-      box-sizing: content-box;
+      min-height: 150vh;
+      padding-bottom: 120px;
+      background-color: #000;
+      box-sizing: border-box;
     }
-    .accent-lines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-    .vertical-accent {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 209px;
-      width: 5px;
-      background-color: white;
-    }
-    .horizontal-accent {
-      position: absolute;
-      top: 50%;
-      height: 5px;
-      width: 100%;
-      background-color: white;
-      transform: translateY(-5px);
-    }
+
     .white-text-box {
       position: absolute;
-      top: 12%;
+      top: 14%;
       left: 0;
       width: 175px;
       height: 175px;
-      background-color: #fff;
-      opacity: 0.75;
+      background-color: #c39fc4;
       font-family: Times, serif;
       font-weight: lighter;
-      color: #000;
+      color: #ffffff;
       font-size: 30px;
       line-height: 1.2;
       transform: translateY(-195px);
-      margin: 5px;
       box-sizing: border-box;
       display: grid;
       place-items: center;
       text-align: center;
       padding: 0;
+      z-index: 3;
     }
-    .text-overlay-box {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 850px;
-      height: 190px;
-      background-color: #888888;
-      display: flex;
-      font-family: Helvetica, sans-serif;
-      font-weight: lighter;
-      align-items: center;
-      text-align: justify;
+    .upper-text-box {
+    position: absolute;
+    top: 55%;
+    width: 375px;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+    padding: 24px;
+    box-sizing: border-box;
+    }
+/* Accordion */
+
+    .accordion {
+      position: fixed;
+      right: 40px;
+      bottom: 140px; /* Just above your 120px footer + some spacing */
+      z-index: 1000;
+      background: #888888ee;
+      border-radius: 14px;
+      max-width: 400px;
+      width: 90vw;
+      box-shadow: 0 2px 10px #0001;
+      margin: 0;
+    }
+    .accordion-item + .accordion-item {
+      border-top: 1px solid #ccc;
+    }
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      background: #888888;
+      border: none;
+      outline: none;
+      padding: 1em;
+      border-radius: 0;
       color: white;
       font-size: 18px;
       line-height: 1.2;
-      z-index: 1;
-      transform: translateY(-195px);
-      box-sizing: border-box;
-      margin: 10;
-      padding-left: 24px;
-      padding-right: 24px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .accordion-header:hover {
+      background: #bdbdbd;
+    }
+    .accordion-content {
+      display: none;
+      padding: 1em;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+    }
+    .accordion-content.open {
+      display: block;
     }
     /* Footer Section */
     .site-footer {
@@ -268,7 +295,7 @@
     .social-icon:hover {
       opacity: 0.7;
     }
-    /* Mobile Styles for Footer & Background */
+    /* Mobile Styles*/
     @media (max-width: 768px) {
       .background-section {
         min-height: 100vh;
@@ -276,24 +303,38 @@
         padding: 110px 8px 60px 8px;
         box-sizing: border-box;
       }
-      .accent-lines { display: yes; }
-      .text-overlay-box {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        min-height: 120px;
-        height: auto;
-        background-color: #888888;
-        padding: 16px 10px;
-        font-size: 16px;
-        transform: none;
-        top: auto;
-        left: auto;
-        display: flex;
-        align-items: center;
-        box-sizing: border-box;
+       .white-text-box {
+       display: none;
       }
+
+      .upper-text-box {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+        text-align: left;
+      }
+      .accordion {
+        position: fixed;
+        right: 40px;
+        bottom: 140px;
+        z-index: 1000;
+        background: #888888ee;
+        border-radius: 14px;
+        max-width: 400px;
+        width: 90vw;
+        box-shadow: 0 2px 10px #0001;
+        margin: 0;
+      }
+
+    @media (max-width: 768px) {
+      .accordion {
+        right: 10px;
+        left: 10px;
+        bottom: 20px;
+        max-width: none;
+        width: auto;
+      }
+    }
       .site-footer {
         position: relative;
         padding: 20px 8px;
@@ -361,20 +402,54 @@
   </div>
 
   <!-- Main Content -->
-  <main>
-    <div class="background-section">
-      <div class="accent-lines">
-        <div class="vertical-accent"></div>
-        <div class="horizontal-accent"></div>
-                <div class="white-text-box">
-          Videos
-        </div>
-        <div class="text-overlay-box">
-          <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, Moda is where fashion lives, moves, and evolves.</p>
-        </div>
+  
+<main>
+  <div class="background-section">
+    <div class="white-text-box">
+        Videos
+    </div>
+  </div>
+  <div class="upper-text-box">
+    <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. 
+      As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest 
+      in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, 
+      read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, 
+      Moda is where fashion lives, moves, and evolves.</p>
+  </div>  
+  <section class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header">From the Runway | NY Fashion Week Sets the World Affire</button>
+      <div class="accordion-content">
+        <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. 
+        As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest 
+        in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, 
+        read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, 
+        Moda is where fashion lives, moves, and evolves.</p>
       </div>
     </div>
-  </main>
+    <div class="accordion-item">
+      <button class="accordion-header">From the Runway | The Paris Fashion Scene</button>
+      <div class="accordion-content">
+        <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. 
+        As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest 
+        in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, 
+        read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, 
+        Moda is where fashion lives, moves, and evolves.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header">From the Runway | What's Trending; What's Not</button>
+      <div class="accordion-content">
+        <p>Moda is a modern fashion destination that blends retail and editorial into one stylish experience. 
+        As both a fashion-forward retailer and the publisher of the acclaimed Moda magazine, our site offers the latest 
+        in apparel, accessories, and trend-driven content. Visitors can explore curated collections, discover emerging designers, 
+        read in-depth style features, and stay ahead of seasonal trends—all in one place. Whether you're here to shop or be inspired, 
+        Moda is where fashion lives, moves, and evolves.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -401,7 +476,7 @@
   </footer>
 
   <!-- JavaScript for toggling mobile menu and search -->
-  <script>
+    <script>
     // Hamburger menu toggle
     document.getElementById('menu-toggle').onclick = function () {
       document.getElementById('nav-list').classList.toggle('open');
@@ -409,8 +484,15 @@
     // Search bar toggle
     document.getElementById('search-toggle').onclick = function () {
       const bar = document.getElementById('search-bar');
-      bar.style.display = (bar.style.display === 'none') ? 'none' : 'block';
+      bar.style.display = (bar.style.display === 'block') ? 'none' : 'block';
     };
+    // Accordion
+    document.querySelectorAll('.accordion-header').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        content.classList.toggle('open');
+      });
+    });
   </script>
 </body>
 </html>

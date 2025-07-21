@@ -151,10 +151,30 @@
       background-repeat: no-repeat;
       position: relative;
     }
+    .white-text-box {
+      position: absolute;
+      top: 35%;
+      left: 0;
+      width: 175px;
+      height: 175px;
+      background-color: #c39fc4;
+      font-family: Times, serif;
+      font-weight: lighter;
+      color: #ffffff;
+      font-size: 30px;
+      line-height: 1.2;
+      transform: translateY(-195px);
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 0;
+      z-index: 3;
+    }
 
     .text-overlay-box {
       background-color: #888888ee;
-      border-radius: 18px;
+      border-radius: 0px;
       display: flex;
       flex-direction: row;
       gap: 48px;
@@ -185,7 +205,7 @@
       height: 140px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #fff;
+      border: 1px solid #000;
       margin-bottom: 0;
       background: #eee;
       box-shadow: 0 2px 8px #0001;
@@ -194,10 +214,14 @@
     .bio {
       background: #fff;
       color: #111;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.45;
       padding: 16px 18px;
-      border-radius: 12px;
+      border-radius: 0px;  
+      font-weight: lighter;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
       box-sizing: border-box;
       width: 100%;
       max-width: 280px;
@@ -216,10 +240,12 @@
       font-family: Arial, Helvetica, sans-serif;
       font-weight: lighter;
       text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
       color: #000;
       font-size: 19px;
       line-height: 1.5;
-      border-radius: 12px;
+      border-radius: 0px;
       width: 900px;
       max-width: 95vw;
       min-height: 80px;
@@ -233,6 +259,9 @@
         width: 98vw;
         gap: 24px;
         padding: 32px 2vw;
+      }
+      .white-text-box {
+       display: none;
       }
       .profile {
         width: 280px;
@@ -252,6 +281,9 @@
       .main-content {
         padding-top: 32px;
         padding-bottom: 24px;
+      }
+       .white-text-box {
+       display: none;
       }
       .text-overlay-box {
         flex-direction: column;
@@ -290,6 +322,9 @@
       .text-overlay-box {
         padding: 12px 0.5vw;
         gap: 20px;
+      }
+       .white-text-box {
+       display: none;
       }
       .profile {
         flex-direction: column;
@@ -441,26 +476,59 @@
 
   <!-- Designers Section -->
   <main class="main-content">
+    <div class="white-text-box">
+      Designers
+    </div>
     <div class="text-overlay-box">
       <div class="profile">
         <img src="images/Moretti.jpg" alt="Designer 1 headshot" class="headshot">
         <div class="bio">
-          <p><strong>Lucia Moretti</strong><br>
-          Lucia is the creative mind behind Studio Moretti, blending Milanese minimalism with modern streetwear influences. Her approach is a seamless mix of high fashion tailoring and functional comfort, creating garments that move with you. Lucia’s designs have been featured in Vogue Italia and on runways from Paris to Tokyo.</p>
+          <p><strong>Carolina Herrera</strong><br>
+          Carolina is the creative mind behind Studio Herrera, blending Milanese minimalism with modern streetwear influences. 
+          Her approach is a seamless mix of high fashion tailoring and functional comfort, creating garments that move with you. 
+          Lucia’s designs have been featured in Vogue Italia and on runways from Paris to Tokyo.</p>
+           <a href="https://www.carolinaherrera.com/us/en/" target="_blank">Visit Carolina's studio.</a>
         </div>
       </div>
       <div class="profile">
         <img src="images/ChenReduced.jpg" alt="Designer 2 headshot" class="headshot">
         <div class="bio">
-          <p><strong>Amara Chen</strong><br>
-          Amara Chen is the founder and lead designer of CHEN Line, a brand known for its eco-conscious materials and bold prints inspired by the landscapes of Southeast Asia. Amara’s philosophy is rooted in sustainable beauty—every piece balances innovation, tradition, and a vibrant sense of individuality.</p>
+          <p><strong>Naeem Khan</strong><br>
+          Naeem Khan is the founder and lead designer of Studio Khan, a brand known for its eco-conscious materials and bold prints inspired 
+          by the landscapes of Southeast Asia. Amara’s philosophy is rooted in sustainable beauty—every piece balances innovation, tradition, 
+          and a vibrant sense of individuality.</p>
+           <a href="https://naeemkhan.com/collections/fast-delivery" target="_blank">Visit Naeem's studio.</a>
         </div>
       </div>
     </div>
     <!-- SCROLL BOX -->
     <div class="scrollBox">
-      <strong>Featured Spotlight:</strong><br>
-      Moda’s designers are not only redefining contemporary style, but also championing sustainability and global influence. Explore our exclusive interviews, behind-the-scenes moments, and the inspirations driving our creative leaders. Whether you’re seeking timeless elegance or daring new trends, Moda brings the world of high fashion to your fingertips.
+        <p>Behind every Moda collection is a deeply collaborative force: a global team of designers whose backgrounds span continents, 
+        disciplines, and schools of thought. United by a shared philosophy of bold minimalism and expressive form, the team brings together 
+        a range of creative identities—couturiers, textile artists, architects, and visual storytellers—each shaping Moda’s evolving aesthetic 
+        from a unique point of view. Their collective experience spans Paris, Seoul, São Paulo, New York, and beyond, forming a cultural mosaic 
+        that is both the soul and signature of the brand. From the earliest sketches to the final fittings, the design team works in tight 
+        rhythm—drawing inspiration from art, movement, memory, and the built environment. While each designer contributes a distinct perspective, 
+        their collaboration fuels a singular vision: fashion that transcends trend, that speaks with precision, and that balances structure with 
+        emotion. Their process is as rigorous as it is intuitive, blending cutting-edge techniques with time-honored craftsmanship to create 
+        garments that feel both modern and eternal.</p>
+
+        <p>Over the years, Moda’s design team has shaped more than just collections—they’ve helped define a new language of style. 
+        Their work has appeared in leading fashion publications, on red carpets, and in galleries and museum exhibitions. 
+        More importantly, it has resonated with a new generation of wearers who seek clothing that is intelligent, expressive, and 
+        inclusive. Moda’s commitment to representation is reflected not only in who it designs for, but in who does the designing. 
+        The team includes voices across gender, culture, and lived experience—an intentional choice that brings richness and authenticity 
+        to every piece.</p>
+
+        <p>In a landscape often driven by ego and hierarchy, Moda’s studio culture is refreshingly horizontal. Designers are encouraged to 
+        challenge each other, to experiment, and to move beyond the constraints of category. Their ideas flow across disciplines, blurring 
+        lines between fashion and sculpture, utility and fantasy. The result is a portfolio of work that is as conceptually rigorous as it is 
+        emotionally resonant—design that doesn’t just dress the body, but invites the wearer into a narrative of form, identity, and 
+        transformation.</p>
+
+        <p>Above, we introduce two designers whose contributions continue to shape Moda’s voice and expand its reach. Their stories are just a 
+        glimpse into the depth of talent behind the brand—an ensemble whose collective impact is redefining what a fashion house can be in the 
+        21st century.</p>
     </div>
   </main>
 
