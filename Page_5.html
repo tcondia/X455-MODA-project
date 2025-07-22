@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Moda | Fashion & Style
-  </title>
+  <title>Moda | Fashion & Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/moda-icon.png">
   <style>
@@ -91,152 +90,61 @@
       max-width: 400px;
       padding: 8px;
       font-size: 16px;
-      border-radius: 4px;
+      border-radius: 0;
       border: 1px solid #ccc;
     }
 
-    /* Hamburger centering for mobile */
-    @media (max-width: 800px) {
-      .site-header {
-        flex-wrap: wrap;
-        padding: 0 14px;
-        min-height: 56px;
-        position: relative;
-      }
-      .menu-toggle {
-        display: block;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1200;
-        margin-left: 0;
-      }
-      .main-nav {
-        width: 100%;
-        justify-content: center;
-      }
-      .nav-list {
-        display: none !important;
-        flex-direction: column;
-        background: #888888;
-        position: absolute;
-        top: 56px;
-        left: 0;
-        right: 0;
-        padding: 18px 0;
-        z-index: 1100;
-      }
-      .nav-list.open {
-        display: flex !important;
-      }
-      .nav-list li a {
-        font-size: 15px;
-        padding: 12px 24px;
-      }
-    }
-
-    /* Background Section & accent lines */
+    /* Main Content*/
     .background-section {
-      position: relative;
-      background-image: url('images/background4reduced.jpg');
-      background-size: contain;
-      background-repeat: no-repeat;
+      background: #000;
       min-height: 100vh;
-      padding-bottom: 120px;
-      background-color: #000;
+      padding: 0 0 60px 0;
       box-sizing: border-box;
     }
-    .accent-lines {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .center-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto 40px auto;
       width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
+      z-index: 5;
     }
-    .vertical-accent {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 209px;
-      width: 5px;
-      background-color: white;
-      z-index: 2;
-    }
-    .horizontal-accent {
-      position: absolute;
-      top: 50%;
-      height: 5px;
+    .center-column .accordion {
       width: 100%;
-      background-color: white;
-      transform: translateY(-5px);
-      z-index: 2;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+    .center-column .text-overlay-box {
+      width: 100%;
+      margin: 0;
     }
     .white-text-box {
       position: absolute;
-      top: 12%;
-      left: 0;
-      width: 175px;
+      top: 14%;
       height: 175px;
-      background-color: #c39fc4;
-      font-family: Times, serif;
-      font-weight: lighter;
-      color: #ffffff;
+      width: 175px;
+      background: #c39fc4;
+      color: #fff;
+      font-family: 'Times New Roman', Times, serif;
       font-size: 30px;
-      line-height: 1.2;
-      transform: translateY(-195px);
-      box-sizing: border-box;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 0;
-      z-index: 3;
-    }
-
-    /* Main Text Overlay */
-    .text-overlay-box {
-      position: relative;
-      background-color: #888888;
-      opacity: .90;
-      color: white;
-      font-family: Helvetica, sans-serif;
-      font-size: 18px;
       font-weight: lighter;
-      line-height: 1.45;
-      border-radius: 0%;
-      margin: 52px auto 32px auto;
-      max-width: 850px;
-      width: 90vw;
-      padding: 32px 32px 26px 32px;
-      z-index: 4;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-      box-shadow: 0 4px 24px #0002;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 16px;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+      border-radius: 0 !important;
     }
-    .text-overlay-box a {
-      color: #fff !important;
-      text-decoration: underline;
-    }
-    .float-img {
-      float: left;
-      width: 300px;
-      margin: 0px 24px 16px 0px;
-      box-shadow: 0 2px 8px #0002;
-      margin-top: 1.2em; 
-}
-    /* Accordion */
     .accordion {
-      margin: 32px auto 16px auto;
-      background: #888888ee;
-      border-radius: 14px;
-      max-width: 600px;
-      width: 95vw;
-      box-shadow: 0 2px 10px #0001;
-      z-index: 10;
-      position: relative;
+      flex: 1 1 320px;
+      margin: 60px;
+      box-shadow: 0 2px 12px #0001;
+      min-width: 300px;
+      max-width: 680px;
+      border-radius: 0 !important;
     }
     .accordion-item + .accordion-item {
       border-top: 1px solid #ccc;
@@ -247,10 +155,10 @@
       background: #888888;
       border: none;
       outline: none;
-      padding: 1em;
-      border-radius: 0;
+      padding: 1.1em;
+      border-radius: 0 !important;
       color: white;
-      font-size: 18px;
+      font-size: 1.05rem;
       line-height: 1.2;
       cursor: pointer;
       transition: background 0.3s;
@@ -263,35 +171,64 @@
       display: none;
       padding: 1em;
       background: #fff;
-      border-radius: 0 0 8px 8px;
+      border-radius: 0 !important;
     }
     .accordion-content.open {
       display: block;
     }
-
-    /* Gallery & Lightbox */
+    .text-overlay-box {
+      position: relative;
+      background-color: #222d;
+      color: #fff;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.55;
+      border-radius: 0 !important;
+      margin: 32px auto 40px auto;
+      max-width: 900px;
+      width: 98vw;
+      padding: 42px 40px 32px 40px;
+      z-index: 4;
+      text-align: justify;
+      box-shadow: 0 4px 24px #0003;
+      overflow: hidden;
+    }
+    .text-overlay-box a {
+      color: #fff !important;
+      text-decoration: underline;
+    }
+  .float-img {
+    float: left;
+    width: 270px;
+    margin: 24px 24px 24px 5px;
+    box-shadow: 0 4px 12px #0001;
+    border-radius: 0 !important;
+    }
     .gallery {
       display: grid;
-      gap: 10px;
-      padding: 60px 20px 20px 20px;
-      max-width: 1200px;
+      gap: 18px;
+      padding: 30px 18px 20px 18px;
+      max-width: 1080px;
       margin: 0 auto;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       z-index: 4;
-      position: relative;
     }
     .thumbnail {
       width: 100%;
       aspect-ratio: 1/1;
       object-fit: cover;
       border: 2px solid #ccc;
-      border-radius: 4px;
+      border-radius: 0 !important;
       cursor: pointer;
-      transition: transform .2s;
-      box-shadow: 0 1px 6px #0001;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 2px 10px #0002;
       background: #fff;
     }
-    .thumbnail:hover { transform: scale(1.03); }
+    .thumbnail:hover { 
+      transform: scale(1.04); 
+      box-shadow: 0 4px 18px #0003;
+    }
     .lightbox {
       display: none;
       position: fixed;
@@ -309,11 +246,10 @@
     .lightbox img {
       max-width: 95vw;
       max-height: 88vh;
-      border-radius: 8px;
+      border-radius: 0 !important;
       box-shadow: 0 2px 24px #000b;
       background: #fff;
     }
-
     /* Footer */
     .site-footer {
       height: 120px;
@@ -373,61 +309,81 @@
     .social-icon:hover {
       opacity: 0.7;
     }
-
     /* Responsive Styles */
-
-    @media (max-width: 1100px) {
-      .text-overlay-box { padding: 24px 4vw; font-size: 16px; }
-      .accordion { max-width: 96vw; }
-      .gallery { max-width: 99vw; }
-      .white-text-box {
-       display: none;
+    @media (max-width: 950px) {
+      .magazine-top-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding-top: 22px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
       }
-      .accent-lines {
-       display: none;
+      .white-text-box {
+        display: none;
+      }
+      .accordion {
+        max-width: 98vw;
+        min-width: unset;
+      }
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .float-img {
+        width: 200px;
+        margin: 0 16px 18px 0;
       }
     }
-    @media (max-width: 900px) {
-      .text-overlay-box { font-size: 15px; padding: 14px 2vw; }
-      .accordion-header { font-size: 16px; }
-      .gallery { grid-template-columns: repeat(2, 1fr); }
-      .footer-logo { height: 44px; }
-      .white-text-box {
-       display: none;
+    @media (max-width: 650px) {
+      .text-overlay-box {
+        padding: 18px 8px 14px 8px;
+        font-size: 15px;
       }
-      .accent-lines {
-       display: none;
+      .gallery {
+        grid-template-columns: 1fr;
+        padding: 10px 3vw 10px 3vw;
+      }
+      .white-text-box {
+        display: none;
       }
     }
-    @media (max-width: 700px) {
-      .text-overlay-box { width: 99vw; max-width: 99vw; }
-      .accordion { width: 99vw; }
-      .gallery { grid-template-columns: 1fr 1fr; padding: 30px 6px 10px 6px; }
-      .white-text-box {
-       display: none;
+    @media (max-width: 800px) {
+      .site-header {
+        flex-wrap: wrap;
+        padding: 0 14px;
+        min-height: 56px;
+        position: relative;
       }
-      .accent-lines {
-       display: none;
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1200;
+        margin-left: 0;
       }
-    }
-    @media (max-width: 600px) {
-      .gallery { grid-template-columns: 1fr 1fr; }
-      .text-overlay-box { font-size: 14px; padding: 8px 2vw; }
-      .accordion-header { font-size: 14px; }
-      .white-text-box {
-       display: none;
+      .main-nav {
+        width: 100%;
+        justify-content: center;
       }
-      .accent-lines {
-       display: none;
+      .nav-list {
+        display: none !important;
+        flex-direction: column;
+        background: #888888;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        padding: 18px 0;
+        z-index: 1100;
       }
-    }
-    @media (max-width: 520px) {
-      .text-overlay-box { font-size: 13px; }
-      .white-text-box {
-       display: none;
+      .nav-list.open {
+        display: flex !important;
       }
-      .accent-lines {
-       display: none;
+      .nav-list li a {
+        font-size: 15px;
+        padding: 12px 24px;
       }
     }
     @media (max-width: 750px) {
@@ -486,71 +442,62 @@
   <div class="search-bar" id="search-bar">
     <input placeholder="Search Moda..." type="text"/>
   </div>
-
   <main>
     <div class="background-section">
-      <div class="accent-lines">
-        <div class="vertical-accent"></div>
-        <div class="horizontal-accent"></div>
-        <div class="white-text-box">
+      <div class="white-text-box">
           Magazine
-        </div>
+        </div>    
+    <div class="center-column">
+        <section class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">Fashion Scene Podcast | Pharrell Opens Up About Louis Vuitton, Dreams & Fashion Design</button>
+            <div class="accordion-content">
+              <iframe width="100%" height="315"
+                src="https://www.youtube.com/embed/Odyf5bCppKI?si=HFyVtAEkVjGyBn7w"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Fashion Scene Podcast | 73 Questions with Anna Wintour</button>
+            <div class="accordion-content">
+               <iframe width="100%" height="315"
+                src="https://www.youtube.com/embed/MhXwO_mkdzQ?si=sIe6HT8CWE3ci097"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Fashion Scene Podcast | Inside Yohji Yamamoto's Fashion Philosophy</button>
+            <div class="accordion-content">
+              <iframe width="100%" height="315"
+                src="https://www.youtube.com/embed/pSJsqYH-hK4?si=FhEip9PxHH8JeN1N"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          </section>
+            <div class="text-overlay-box">
+            <img src="images/Moda Cover.jpeg" class="float-img">
+          <p>
+          <strong>Fashion Scene</strong> is the bold, stylish voice of Moda—a magazine that captures the pulse of fashion, culture, and creativity around the world.<br><br>
+          With a sharp eye for what's next and a reverence for what endures, Fashion Scene brings together emerging designers, iconic tastemakers, and the visual storytellers shaping how we dress and express ourselves. Each issue is a curated experience, blending runway reportage with behind-the-scenes access, in-depth features, and striking editorial photography.<br><br>
+          Whether it’s spotlighting sustainable ateliers in Paris, decoding the digital couture revolution, or exploring the intersections of fashion and art in Tokyo, Fashion Scene delivers global style with edge and intellect.<br><br>
+          But it’s more than just a magazine—it’s Moda’s manifesto. A platform for fresh perspectives. A showcase for boundary-pushing design. And a love letter to those who believe fashion is more than fabric—it’s a way of seeing and being.<br><br>
+          Printed quarterly and powered by Moda’s fearless spirit, Fashion Scene invites readers to step into a world where aesthetic meets meaning, and every page tells a story worth wearing.<br><br>
+          <a href="images/Moda Cover.png" target="_blank">Download our inaugural issue.</a>
+         </p>
+        </div>  
       </div>
-
-      <!-- Accordion for Videos -->
-      <section class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-header">Moda Video Series | Inside Yohji Yamamoto's Fashion Philosophy</button>
-          <div class="accordion-content">
-            <iframe width="100%" height="315"
-              src="https://www.youtube.com/embed/pSJsqYH-hK4?si=FhEip9PxHH8JeN1N"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-header">Moda Video Series | 73 Questions with Anna Wintour</button>
-          <div class="accordion-content">
-            <iframe width="100%" height="315"
-              src="https://www.youtube.com/embed/MhXwO_mkdzQ?si=sIe6HT8CWE3ci097"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <button class="accordion-header">Moda Video Series | Pharrell Opens Up About Louis Vuitton, Dreams & Fashion Design</button>
-          <div class="accordion-content">
-            <iframe width="100%" height="315"
-              src="https://www.youtube.com/embed/Odyf5bCppKI?si=HFyVtAEkVjGyBn7w"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </div>
-        </div>
-      </section>
-
-      <!-- Magazine Text Box -->
-      <div class="text-overlay-box">
-        <img src="images/Moda Cover.jpeg" class="float-img">
-        <p>
-        <strong>Fashion Scene</strong> is the bold, stylish voice of Moda—a magazine that captures the pulse of fashion, culture, and creativity around the world.<br><br>
-    With a sharp eye for what's next and a reverence for what endures, Fashion Scene brings together emerging designers, iconic tastemakers, and the visual storytellers shaping how we dress and express ourselves. Each issue is a curated experience, blending runway reportage with behind-the-scenes access, in-depth features, and striking editorial photography.<br><br>
-    Whether it’s spotlighting sustainable ateliers in Paris, decoding the digital couture revolution, or exploring the intersections of fashion and art in Tokyo, Fashion Scene delivers global style with edge and intellect.<br><br>
-    But it’s more than just a magazine—it’s Moda’s manifesto. A platform for fresh perspectives. A showcase for boundary-pushing design. And a love letter to those who believe fashion is more than fabric—it’s a way of seeing and being.<br><br>
-    Printed quarterly and powered by Moda’s fearless spirit, Fashion Scene invites readers to step into a world where aesthetic meets meaning, and every page tells a story worth wearing.<br><br>
-        <a href="images/Moda Cover.png" target="_blank">Download our inaugural issue.</a>
-      </p>
-      </div>
-
-      <!-- Responsive Gallery -->
       <div class="gallery">
         <img src="images/thumb1.jpg" class="thumbnail" onclick="openLightbox(this)">
         <img src="images/thumb2.jpg" class="thumbnail" onclick="openLightbox(this)">
@@ -559,14 +506,12 @@
         <img src="images/thumb5.jpg" class="thumbnail" onclick="openLightbox(this)">
         <img src="images/thumb6.jpg" class="thumbnail" onclick="openLightbox(this)">
       </div>
-
       <!-- Lightbox -->
       <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <img id="lightbox-img" src="" alt="Enlarged Image">
       </div>
     </div>
   </main>
-
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-bar"></div>
@@ -580,7 +525,6 @@
     <p class="footer-contact">27 Fifth Avenue, New York, New York 10011 | 212.628.4569</p>
     <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
   </footer>
-
   <!-- Script -->
   <script>
     // Hamburger menu toggle
