@@ -15,7 +15,6 @@
       background: #e8e6e3;
       overflow-x: hidden;
     }
-
     /* Header Styles */
     .site-header {
       display: flex;
@@ -96,7 +95,6 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-
     /* Center hamburger on mobile */
     @media (max-width: 800px) {
       .site-header {
@@ -137,23 +135,22 @@
         padding: 12px 24px;
       }
     }
-
-    /* Designers Section */
     .main-content {
-      min-height: 70vh;
+      min-height: 175vh;
       padding-top: 60px;
       padding-bottom: 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       background-image: url('images/background4reduced.jpg');
-      background-size: cover;
+      background-color: #abc29b;
+      background-size: contain;
       background-repeat: no-repeat;
       position: relative;
     }
     .white-text-box {
       position: absolute;
-      top: 35%;
+      top: 10%;
       left: 0;
       width: 175px;
       height: 175px;
@@ -163,7 +160,6 @@
       color: #ffffff;
       font-size: 30px;
       line-height: 1.2;
-      transform: translateY(-195px);
       box-sizing: border-box;
       display: grid;
       place-items: center;
@@ -171,89 +167,76 @@
       padding: 0;
       z-index: 3;
     }
-
-    .text-overlay-box {
-      background-color: #888888ee;
-      border-radius: 0px;
-      display: flex;
-      flex-direction: row;
-      gap: 48px;
-      align-items: flex-start;
-      justify-content: center;
-      box-sizing: border-box;
-      width: 900px;
-      max-width: 95vw;
-      padding: 40px 32px;
-      margin: 48px 0 32px 0;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 4px 24px #0002;
-    }
-
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 320px;
-      max-width: 98vw;
-      gap: 16px;
-      flex: 1 1 320px;
-    }
-
-    .headshot {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 1px solid #000;
-      margin-bottom: 0;
-      background: #eee;
-      box-shadow: 0 2px 8px #0001;
-    }
-
-    .bio {
-      background: #fff;
-      color: #111;
-      font-size: 17px;
-      line-height: 1.45;
-      padding: 16px 18px;
-      border-radius: 0px;  
-      font-weight: lighter;
-      text-align: justify;
-      text-justify: inter-word;
-      hyphens: auto;
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 280px;
-      min-width: 150px;
-      overflow-y: auto;
-      max-height: 200px;
-      box-shadow: 0 1px 6px #0002;
-    }
-
-    /* Scroll Box Styles (for all devices) */
     .scrollBox {
       box-sizing: border-box;
-      background-color: #abc29b;
+      background-color: #000;
+      opacity: 85%;
       overflow-y: auto;
       padding: 18px 28px;
       font-family: Arial, Helvetica, sans-serif;
-      font-weight: lighter;
       text-align: justify;
-      text-justify: inter-word;
       hyphens: auto;
-      color: #000;
+      color: #fff;
       font-size: 19px;
       line-height: 1.5;
       border-radius: 0px;
       width: 900px;
       max-width: 95vw;
       min-height: 80px;
-      max-height: 160px;
-      margin: 0 auto 40px auto;
-      box-shadow: 0 1px 6px #0001;
+      max-height: 500px;
+      margin: 750px auto 40px auto;
     }
-
+    .text-overlay-box {
+      background-color: #888888ee;
+      border-radius: 0px;
+      display: flex;
+      flex-direction: row;
+      gap: 48px;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      width: 900px;
+      max-width: 95vw;
+      max-height: 200px;
+      min-height: 80px;
+      padding: 40px 32px;
+      margin: 48px 0 32px 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 24px #0002;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 420px;
+      max-width: 98vw;
+      gap: 16px;
+      flex: 1 1 320px;
+    }
+    .image-wrap {
+      float: right; /* Floats the image to the right */
+      margin-left: 10px; /* Adds space between the image and the text */
+    }
+    .headshot {
+      width: 115px;
+      height: 115px;
+    }
+    .bio {
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1.45;
+      padding: 16px 18px;
+      font-weight: lighter;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 150px;
+      overflow-y: auto;
+      max-height:150px;
+    }
     @media (max-width: 1100px) {
       .text-overlay-box {
         width: 98vw;
@@ -468,39 +451,14 @@
       </a>
     </div>
   </header>
-
   <!-- Search Bar -->
   <div class="search-bar" id="search-bar">
     <input placeholder="Search Moda..." type="text"/>
   </div>
-
-  <!-- Designers Section -->
   <main class="main-content">
-    <div class="white-text-box">
-      Designers
-    </div>
-    <div class="text-overlay-box">
-      <div class="profile">
-        <img src="images/Moretti.jpg" alt="Designer 1 headshot" class="headshot">
-        <div class="bio">
-          <p><strong>Carolina Herrera</strong><br>
-          Carolina is the creative mind behind Studio Herrera, blending Milanese minimalism with modern streetwear influences. 
-          Her approach is a seamless mix of high fashion tailoring and functional comfort, creating garments that move with you. 
-          Lucia’s designs have been featured in Vogue Italia and on runways from Paris to Tokyo.</p>
-           <a href="https://www.carolinaherrera.com/us/en/" target="_blank">Visit Carolina's studio.</a>
-        </div>
-      </div>
-      <div class="profile">
-        <img src="images/ChenReduced.jpg" alt="Designer 2 headshot" class="headshot">
-        <div class="bio">
-          <p><strong>Naeem Khan</strong><br>
-          Naeem Khan is the founder and lead designer of Studio Khan, a brand known for its eco-conscious materials and bold prints inspired 
-          by the landscapes of Southeast Asia. Amara’s philosophy is rooted in sustainable beauty—every piece balances innovation, tradition, 
-          and a vibrant sense of individuality.</p>
-           <a href="https://naeemkhan.com/collections/fast-delivery" target="_blank">Visit Naeem's studio.</a>
-        </div>
-      </div>
-    </div>
+  <div class="white-text-box">
+    Designers
+  </div>
     <!-- SCROLL BOX -->
     <div class="scrollBox">
         <p>Behind every Moda collection is a deeply collaborative force: a global team of designers whose backgrounds span continents, 
@@ -530,8 +488,28 @@
         glimpse into the depth of talent behind the brand—an ensemble whose collective impact is redefining what a fashion house can be in the 
         21st century.</p>
     </div>
+    <div class="text-overlay-box">
+      <div class="profile">
+        <div class="bio">
+          <p><strong>Carolina Herrera</strong><br>
+          Carolina is the creative mind behind Studio Herrera, blending Milanese minimalism with modern streetwear influences. 
+          Her approach is a seamless <img src="images/Moretti.jpg" alt="Designer 1 headshot" 
+          class="headshot image-wrap">mix of high fashion tailoring and functional comfort, creating garments that move with you. 
+          Lucia’s designs have been featured in Vogue Italia and on runways from Paris to Tokyo.</p>
+           <a href="https://www.carolinaherrera.com/us/en/" target="_blank">Visit Carolina's studio.</a>
+        </div>
+      </div>
+      <div class="profile">
+        <div class="bio">
+          <p><strong>Naeem Khan</strong><br>
+          Naeem Khan is the founder and lead designer of Studio Khan, a brand known for its eco-conscious materials and <img src="images/ChenReduced.jpg" alt="Designer 2 headshot" class="headshot image-wrap">bold prints inspired 
+          by the landscapes of Southeast Asia. Amara’s philosophy is rooted in sustainable beauty—every piece balances innovation, tradition, 
+          and a vibrant sense of individuality.</p>
+           <a href="https://naeemkhan.com/collections/fast-delivery" target="_blank">Visit Naeem's studio.</a>
+        </div>
+      </div>
+    </div>
   </main>
-
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-bar"></div>
