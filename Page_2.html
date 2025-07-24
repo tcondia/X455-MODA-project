@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/png" href="images/moda-icon.png">
 <head>
   <meta charset="UTF-8">
+  <title>Moda | Fashion & Style</title>
   <link rel="icon" type="image/png" href="images/moda-icon.png">
-  <title>Moda | Fashion & Style
-  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     html, body {
       margin: 0;
       padding: 0;
       font-family: Helvetica, Arial, sans-serif;
-      background: #e8e6e3;
+      background: transparent !important;
+      min-height: 100%;
+      height: 100%;
       overflow-x: hidden;
     }
-    /* Header Styles */
+
+    /* VIDEO BACKGROUND */
+    .bg-video {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      pointer-events: none;
+      filter: grayscale(50%);
+    }
+
+    /* HEADER */
     .site-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #888888;
+      background: #888888ee;
       border-bottom: 5px solid #c39fc4;
       padding: 0 32px;
       min-height: 72px;
@@ -30,10 +43,7 @@
       top: 0;
       z-index: 2000;
     }
-    .logo img {
-      height: 48px;
-      display: block;
-    }
+    .logo img { height: 48px; display: block; }
     .main-nav {
       flex: 1;
       display: flex;
@@ -54,9 +64,7 @@
       font-size: 18px;
       font-weight: lighter;
     }
-    .nav-list li a:hover {
-      color: #c39fc4;
-    }
+    .nav-list li a:hover { color: #c39fc4; }
     .menu-toggle {
       display: none;
       background: none;
@@ -82,10 +90,12 @@
     .search-bar {
       display: none;
       width: 100%;
-      background: #abc29b;
+      background: #abc29be0;
       padding: 12px 32px;
       border-bottom: 1px solid #888888;
       box-sizing: border-box;
+      position: relative;
+      z-index: 3000;
     }
     .search-bar input {
       width: 100%;
@@ -95,14 +105,9 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-    /* Center hamburger on mobile */
+
     @media (max-width: 800px) {
-      .site-header {
-        flex-wrap: wrap;
-        padding: 0 14px;
-        min-height: 56px;
-        position: relative;
-      }
+      .site-header { flex-wrap: wrap; padding: 0 14px; min-height: 56px; position: relative; }
       .menu-toggle {
         display: block;
         position: absolute;
@@ -112,14 +117,11 @@
         z-index: 1200;
         margin-left: 0;
       }
-      .main-nav {
-        width: 100%;
-        justify-content: center;
-      }
+      .main-nav { width: 100%; justify-content: center; }
       .nav-list {
         display: none !important;
         flex-direction: column;
-        background: #888888;
+        background: #888888ee;
         position: absolute;
         top: 56px;
         left: 0;
@@ -127,14 +129,11 @@
         padding: 18px 0;
         z-index: 1100;
       }
-      .nav-list.open {
-        display: flex !important;
-      }
-      .nav-list li a {
-        font-size: 15px;
-        padding: 12px 24px;
-      }
+      .nav-list.open { display: flex !important; }
+      .nav-list li a { font-size: 15px; padding: 12px 24px; }
     }
+
+    /* MAIN CONTENT */
     .main-content {
       min-height: 175vh;
       padding-top: 60px;
@@ -142,19 +141,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-image: url('images/background4reduced.jpg');
-      background-color: #abc29b;
+      background: transparent !important;
       background-size: contain;
       background-repeat: no-repeat;
       position: relative;
+      z-index: 1;
     }
+
     .white-text-box {
       position: absolute;
       top: 10%;
       left: 0;
       width: 175px;
       height: 175px;
-      background-color: #c39fc4;
+      background-color: #c39fc4ee;
       font-family: Times, serif;
       font-weight: lighter;
       color: #ffffff;
@@ -166,11 +166,12 @@
       text-align: center;
       padding: 0;
       z-index: 3;
+      backdrop-filter: blur(6px);
     }
+
     .scrollBox {
       box-sizing: border-box;
-      background-color: #000;
-      opacity: 85%;
+      background-color: rgba(0,0,0,0.75);
       overflow-y: auto;
       padding: 18px 28px;
       font-family: Arial, Helvetica, sans-serif;
@@ -185,9 +186,10 @@
       min-height: 80px;
       max-height: 500px;
       margin: 750px auto 40px auto;
+      z-index: 2;
     }
     .text-overlay-box {
-      background-color: #888888ee;
+      background-color: rgba(136,136,136,0.85);
       border-radius: 0px;
       display: flex;
       flex-direction: row;
@@ -204,6 +206,7 @@
       position: relative;
       z-index: 2;
       box-shadow: 0 4px 24px #0002;
+      backdrop-filter: blur(3px);
     }
     .profile {
       display: flex;
@@ -215,13 +218,10 @@
       flex: 1 1 320px;
     }
     .image-wrap {
-      float: right; /* Floats the image to the right */
-      margin-left: 10px; /* Adds space between the image and the text */
+      float: right;
+      margin-left: 10px;
     }
-    .headshot {
-      width: 115px;
-      height: 115px;
-    }
+    .headshot { width: 115px; height: 115px; }
     .bio {
       color: #ffffff;
       font-size: 17px;
@@ -235,39 +235,19 @@
       width: 100%;
       min-width: 150px;
       overflow-y: auto;
-      max-height:150px;
+      max-height: 150px;
     }
+
     @media (max-width: 1100px) {
-      .text-overlay-box {
-        width: 98vw;
-        gap: 24px;
-        padding: 32px 2vw;
-      }
-      .white-text-box {
-       display: none;
-      }
-      .profile {
-        width: 280px;
-        max-width: 98vw;
-      }
-      .bio {
-        max-width: 98vw;
-      }
-      .scrollBox {
-        width: 96vw;
-        max-width: 96vw;
-        padding: 16px 2vw;
-        font-size: 17px;
-      }
+      .text-overlay-box { width: 98vw; gap: 24px; padding: 32px 2vw; }
+      .white-text-box { display: none; }
+      .profile { width: 280px; max-width: 98vw; }
+      .bio { max-width: 98vw; }
+      .scrollBox { width: 96vw; max-width: 96vw; padding: 16px 2vw; font-size: 17px; }
     }
     @media (max-width: 900px) {
-      .main-content {
-        padding-top: 32px;
-        padding-bottom: 24px;
-      }
-       .white-text-box {
-       display: none;
-      }
+      .main-content { padding-top: 32px; padding-bottom: 24px; }
+      .white-text-box { display: none; }
       .text-overlay-box {
         flex-direction: column;
         align-items: center;
@@ -283,63 +263,28 @@
         align-items: flex-start;
         gap: 18px;
       }
-      .headshot {
-        width: 100px;
-        height: 100px;
-      }
-      .bio {
-        font-size: 16px;
-        padding: 10px 10px;
-        max-width: 70vw;
-        max-height: 130px;
-      }
-      .scrollBox {
-        width: 98vw;
-        max-width: 98vw;
-        font-size: 16px;
-        max-height: 110px;
-        margin: 24px auto 32px auto;
-      }
+      .headshot { width: 100px; height: 100px; }
+      .bio { font-size: 16px; padding: 10px 10px; max-width: 70vw; max-height: 130px; }
+      .scrollBox { width: 98vw; max-width: 98vw; font-size: 16px; max-height: 110px; margin: 24px auto 32px auto; }
     }
     @media (max-width: 650px) {
-      .text-overlay-box {
-        padding: 12px 0.5vw;
-        gap: 20px;
-      }
-       .white-text-box {
-       display: none;
-      }
-      .profile {
-        flex-direction: column;
-        align-items: center;
-        width: 100vw;
-        gap: 8px;
-      }
-      .headshot {
-        width: 70px;
-        height: 70px;
-      }
-      .bio {
-        font-size: 14px;
-        max-width: 95vw;
-        max-height: 95px;
-        padding: 8px 4px;
-      }
-      .scrollBox {
-        font-size: 15px;
-        max-width: 99vw;
-        width: 99vw;
-        padding: 10px 2vw;
-        max-height: 70px;
-      }
+      .text-overlay-box { padding: 12px 0.5vw; gap: 20px; }
+      .white-text-box { display: none; }
+      .profile { flex-direction: column; align-items: center; width: 100vw; gap: 8px; }
+      .headshot { width: 70px; height: 70px; }
+      .bio { font-size: 14px; max-width: 95vw; max-height: 95px; padding: 8px 4px; }
+      .scrollBox { font-size: 15px; max-width: 99vw; width: 99vw; padding: 10px 2vw; max-height: 70px; }
     }
-    /* Footer Section */
+
+    /* FOOTER */
     .site-footer {
       height: 120px;
-      background-color: #888888;
+      background-color: #888888ee;
       border-top: 5px solid #c39fc4;
       position: relative;
       width: 100%;
+      z-index: 10;
+      backdrop-filter: blur(8px);
     }
     .footer-bar {
       position: absolute;
@@ -388,19 +333,10 @@
       height: 36px;
       transition: opacity 0.2s ease;
     }
-    .social-icon:hover {
-      opacity: 0.7;
-    }
+    .social-icon:hover { opacity: 0.7; }
     @media only screen and (max-width: 750px) {
-      .site-footer {
-        position: static;
-        height: auto;
-        padding: 20px 8px 16px 8px;
-        text-align: center;
-      }
-      .footer-contact, .footer-text {
-        display: none;
-      }
+      .site-footer { position: static; height: auto; padding: 20px 8px 16px 8px; text-align: center; }
+      .footer-contact, .footer-text { display: none; }
       .footer-logo, .footer-bar {
         position: static;
         display: block;
@@ -412,20 +348,19 @@
         height: 40px;
         max-width: 90vw;
       }
-      .social-icons {
-        position: static;
-        justify-content: center;
-        margin: 16px 0 0 0;
-      }
-      .social-icon {
-        width: 25px;
-        height: 25px;
-      }
+      .social-icons { position: static; justify-content: center; margin: 16px 0 0 0; }
+      .social-icon { width: 25px; height: 25px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay loop muted playsinline class="bg-video">
+    <source src="images/test2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- HEADER -->
   <header class="site-header">
     <div class="logo">
       <a href="index.html">
@@ -451,17 +386,20 @@
       </a>
     </div>
   </header>
-  <!-- Search Bar -->
+
+  <!-- SEARCH BAR -->
   <div class="search-bar" id="search-bar">
     <input placeholder="Search Moda..." type="text"/>
   </div>
+
+  <!-- MAIN CONTENT -->
   <main class="main-content">
-  <div class="white-text-box">
-    Designers
-  </div>
+    <div class="white-text-box">
+      Designers
+    </div>
     <!-- SCROLL BOX -->
     <div class="scrollBox">
-        <p>Behind every Moda collection is a deeply collaborative force: a global team of designers whose backgrounds span continents, 
+      <p>Behind every Moda collection is a deeply collaborative force: a global team of designers whose backgrounds span continents, 
         disciplines, and schools of thought. United by a shared philosophy of bold minimalism and expressive form, the team brings together 
         a range of creative identities—couturiers, textile artists, architects, and visual storytellers—each shaping Moda’s evolving aesthetic 
         from a unique point of view. Their collective experience spans Paris, Seoul, São Paulo, New York, and beyond, forming a cultural mosaic 
@@ -470,24 +408,22 @@
         their collaboration fuels a singular vision: fashion that transcends trend, that speaks with precision, and that balances structure with 
         emotion. Their process is as rigorous as it is intuitive, blending cutting-edge techniques with time-honored craftsmanship to create 
         garments that feel both modern and eternal.</p>
-
-        <p>Over the years, Moda’s design team has shaped more than just collections—they’ve helped define a new language of style. 
+      <p>Over the years, Moda’s design team has shaped more than just collections—they’ve helped define a new language of style. 
         Their work has appeared in leading fashion publications, on red carpets, and in galleries and museum exhibitions. 
         More importantly, it has resonated with a new generation of wearers who seek clothing that is intelligent, expressive, and 
         inclusive. Moda’s commitment to representation is reflected not only in who it designs for, but in who does the designing. 
         The team includes voices across gender, culture, and lived experience—an intentional choice that brings richness and authenticity 
         to every piece.</p>
-
-        <p>In a landscape often driven by ego and hierarchy, Moda’s studio culture is refreshingly horizontal. Designers are encouraged to 
+      <p>In a landscape often driven by ego and hierarchy, Moda’s studio culture is refreshingly horizontal. Designers are encouraged to 
         challenge each other, to experiment, and to move beyond the constraints of category. Their ideas flow across disciplines, blurring 
         lines between fashion and sculpture, utility and fantasy. The result is a portfolio of work that is as conceptually rigorous as it is 
         emotionally resonant—design that doesn’t just dress the body, but invites the wearer into a narrative of form, identity, and 
         transformation.</p>
-
-        <p>Above, we introduce two designers whose contributions continue to shape Moda’s voice and expand its reach. Their stories are just a 
+      <p>Below, we introduce two designers whose contributions continue to shape Moda’s voice and expand its reach. Their stories are just a 
         glimpse into the depth of talent behind the brand—an ensemble whose collective impact is redefining what a fashion house can be in the 
         21st century.</p>
     </div>
+
     <div class="text-overlay-box">
       <div class="profile">
         <div class="bio">
@@ -510,7 +446,8 @@
       </div>
     </div>
   </main>
-  <!-- Footer -->
+
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-bar"></div>
     <img alt="Moda Logo" class="footer-logo" src="images/Moda-Brand.png"/>
@@ -524,13 +461,12 @@
     <p class="footer-text">© 2025 The Fashion Group, LLC.</p>
   </footer>
 
-  <!-- Script -->
+  <!-- JS FOR HAMBURGER & SEARCH -->
   <script>
     // Hamburger menu toggle
     document.getElementById('menu-toggle').onclick = function () {
       document.getElementById('nav-list').classList.toggle('open');
     };
-
     // Search bar toggle
     document.getElementById('search-toggle').onclick = function () {
       const bar = document.getElementById('search-bar');
