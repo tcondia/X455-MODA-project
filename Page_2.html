@@ -290,179 +290,187 @@
     }
     .social-icon:hover { opacity: 0.7; }
 
-    @media (max-width: 1150px) {
-    .text-overlay-box {
-      width: 98vw;
-      gap: 10px;
-      padding: 32px 2vw;
-      border-radius: 8px;
-      margin-top: 20px;
-      margin-bottom: 18px;
-      min-height: 90px;
-      max-height: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-    }
-    .white-text-box {
-      display: none;
-    }
-    .profile {
-      width: 280px;
-      max-width: 98vw;
-    }
-    .bio {
-      max-width: 98vw;
-    }
-    .scrollBox {
-      width: 96vw;
-      max-width: 80vw;
-      padding: 16px 2vw;
-      font-size: 17px;
-      border-radius: 8px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      max-height: 38vh;
-      min-height: 80px;
-      margin: 24px auto 32px auto;
-      background: rgba(0,0,0,0.78);
-    }
+    /* 1150px and down: wider tablets, small laptops */
+@media (max-width: 1150px) {
+  .text-overlay-box {
+    width: 98vw;
+    gap: 10px;
+    padding: 32px 2vw;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 18px;
+    min-height: 90px;
+    max-height: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   }
-  @media (max-width: 900px) {
-    .main-content {
-      padding-top: 32px;
-      padding-bottom: 24px;
-    }
-    .white-text-box {
-      display: none;
-    }
-    .text-overlay-box {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      width: 98vw;
-      padding: 18px 2vw;
-      margin: 18px 0 12px 0;
-      border-radius: 8px;
-      min-height: 90px;
-      max-height: none;
-    }
-    .profile {
-      width: 94vw;
-      max-width: 500px;
-      max-height: 160px;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .headshot {
-      width: 84px;
-      height: 84px;
-      border-radius: 8px;
-    }
-    .bio {
-      font-size: 15px;
-      padding: 8px 8px;
-      max-width: 75vw;
-      max-height: 130px;
-      border-radius: 6px;
-      background: rgba(120,120,120,0.18);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .scrollBox {
-      width: 98vw;
-      max-width: 98vw;
-      font-size: 15.5px;
-      max-height: 26vh;
-      min-height: 60px;
-      margin: 18px auto 20px auto;
-      padding: 10px 2vw;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      background: rgba(0,0,0,0.78);
-    }
+  .white-text-box {
+    display: none;
   }
-  @media (max-width: 650px) {
-    .text-overlay-box {
-      padding: 10px 1vw;
-      gap: 16px;
-      border-radius: 8px;
-      margin: 14px 0 8px 0;
-    }
-    .white-text-box {
-      display: none;
-    }
-    .profile {
-      flex-direction: column;
-      align-items: center;
-      width: 100vw;
-      gap: 8px;
-      max-height: 160px;
-    }
-    .headshot {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-    }
-    .bio {
-      font-size: 13.2px;
-      max-width: 96vw;
-      max-height: 130px;
-      padding: 6px 2vw;
-      border-radius: 7px;
-      background: rgba(120,120,120,0.13);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .scrollBox {
-      font-size: 14.5px;
-      max-width: 99vw;
-      width: 99vw;
-      padding: 7px 1vw;
-      max-height: 18vh;
-      min-height: 40px;
-      border-radius: 7px;
-      margin: 10px auto 14px auto;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
-      background: rgba(0,0,0,0.78);
-    }
-    /* Footer styles */
-@media only screen and (max-width: 900px) {
+  .profile {
+    width: 280px;
+    max-width: 98vw;
+  }
+  .bio {
+    max-width: 98vw;
+  }
+  .scrollBox {
+    width: 96vw;
+    max-width: 80vw;
+    padding: 16px 2vw;
+    font-size: 17px;
+    border-radius: 8px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    max-height: 38vh;
+    min-height: 80px;
+    margin: 24px auto 32px auto;
+    background: rgba(0,0,0,0.78);
+  }
+}
 
-    .site-footer {
-      position: static;
-      height: auto;
-      padding: 16px 8px 12px 8px;
-      text-align: center;
-    }
-    .footer-contact, .footer-text {
-      display: none !important
-    }
-    .footer-logo, .footer-bar {
-      position: static;
-      display: block;
-      margin: 8px auto 0 auto;
-      left: unset;
-      right: unset;
-      top: unset;
-      transform: none;
-      height: 38px;
-      max-width: 88vw;
-    }
-    .social-icons {
-      position: static;
-      justify-content: center;
-      margin: 12px 0 0 0;
-    }
-    .social-icon {
-      width: 22px;
-      height: 22px;
-    }
+/* 900px and down: standard tablet, large mobile */
+@media (max-width: 900px) {
+  .main-content {
+    padding-top: 32px;
+    padding-bottom: 24px;
   }
+  .white-text-box {
+    display: none;
+  }
+  .text-overlay-box {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 98vw;
+    padding: 18px 2vw;
+    margin: 18px 0 12px 0;
+    border-radius: 8px;
+    min-height: 90px;
+    max-height: none;
+  }
+  .profile {
+    width: 94vw;
+    max-width: 500px;
+    max-height: 160px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .headshot {
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+  }
+  .bio {
+    font-size: 15px;
+    padding: 8px 8px;
+    max-width: 75vw;
+    max-height: 130px;
+    border-radius: 6px;
+    background: rgba(120,120,120,0.18);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scrollBox {
+    width: 98vw;
+    max-width: 98vw;
+    font-size: 15.5px;
+    max-height: 26vh;
+    min-height: 60px;
+    margin: 18px auto 20px auto;
+    padding: 10px 2vw;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(0,0,0,0.78);
+  }
+  /* Footer: moved out of the nested query */
+  .site-footer {
+    position: static;
+    height: auto;
+    padding: 16px 8px 12px 8px;
+    text-align: center;
+  }
+  .footer-contact, .footer-text {
+    display: none !important;
+  }
+  .footer-logo, .footer-bar {
+    position: static;
+    display: block;
+    margin: 8px auto 0 auto;
+    left: unset;
+    right: unset;
+    top: unset;
+    transform: none;
+    height: 38px;
+    max-width: 88vw;
+  }
+  .social-icons {
+    position: static;
+    justify-content: center;
+    margin: 12px 0 0 0;
+  }
+  .social-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* 650px and down: most mobile phones */
+@media (max-width: 650px) {
+  .text-overlay-box {
+    padding: 10px 1vw;
+    gap: 16px;
+    border-radius: 8px;
+    margin: 14px 0 8px 0;
+  }
+  .white-text-box {
+    display: none;
+  }
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    gap: 8px;
+    max-height: 160px;
+  }
+  .headshot {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+  .bio {
+    font-size: 13.2px;
+    max-width: 96vw;
+    max-height: 130px;
+    padding: 6px 2vw;
+    border-radius: 7px;
+    background: rgba(120,120,120,0.13);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scrollBox {
+    font-size: 14.5px;
+    max-width: 99vw;
+    width: 99vw;
+    padding: 7px 1vw;
+    max-height: 18vh;
+    min-height: 40px;
+    border-radius: 7px;
+    margin: 10px auto 14px auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.10);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(0,0,0,0.78);
+  }
+}
+
+
+
+
+
   </style>
 </head>
 <body>

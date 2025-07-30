@@ -203,7 +203,7 @@ a {
   z-index: 2;
 }
 /* Force upper-text-box left on desktop/tablet */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
   .upper-text-box {
     left: 0;
     right: auto;
@@ -215,11 +215,8 @@ a {
 }
 /* Carousel & Profile */
 .text-overlay-box {
-  display: flex;
-  flex-direction: column;
   gap: 48px;
   padding: 32px;
-  background-color: rgba(171, 194, 155, 0.75);
   color: white;
   font-family: Helvetica, sans-serif;
   font-weight: lighter;
@@ -277,11 +274,11 @@ th:first-child, td:first-child {
 }
 tr:nth-child(even) {
   background-color: #c39fc4;
-  opacity: .75;
+ 
 }
 tr:nth-child(odd) {
   background-color: #888888;
-  opacity: .75;
+  
 }
 .fa-check, .fa-remove {
   color: #fff;
@@ -347,19 +344,39 @@ tr:nth-child(odd) {
       .background-section {
         position: relative;
         background-image: url('images/background3reduced.jpg');
-        background-size: contain;
+
+  height: 50vh;         /* Shows just the top half of the image */
+  min-height: 320px;    /* (optional) so it's not tiny on landscape phones */
+  background-size: cover; /* You can also use 'contain' if you want full width */
+  background-position: top center; /* Ensures it's anchored at the top */
+
+
+
         background-color: #000;
         background-repeat: no-repeat;
-        height: 225vh;
-        padding-bottom: 400px;
+        height: 215vh;
+        padding-bottom: 299px;
         box-sizing: content-box;
       }  
-  
       .white-text-box {
        display: none;
       }
       .accent-lines {
        display: none;
+      }
+      .upper-text-box{
+        position: static !important;
+        width: 100%;
+        background-color: #c39fc4;
+        box-sizing: border-box;
+        display: block;
+        align-items: center;
+        font-family: Helvetica, sans-serif;
+        font-size: 12px;
+        text-align: justify;
+        hyphens: auto;
+        color: white;
+        line-height: 1.2;
       }
       .text-overlay-box {
         margin: 20px 0 10px 0;
@@ -379,7 +396,7 @@ tr:nth-child(odd) {
         max-width: 98vw;
       }
       table {
-        font-size: 13px;
+        font-size: 8px;
         max-width: 98vw;
       }
       th, td { padding: 9px; }
