@@ -93,7 +93,6 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-    /* RESPONSIVE STYLES */
    /* RESPONSIVE STYLES */
     @media (max-width: 900px) {
       .nav-list {
@@ -155,7 +154,7 @@
     }
     .white-text-box {
       position: absolute;
-      top: 25%;
+      top: 20%;
       left: 0;
       width: 175px;
       height: 175px;
@@ -175,7 +174,7 @@
     }
     .upper-text-box {
     position: absolute;
-    top: 35%;
+    top: 25%;
     width: 375px;
     display: flex;
     align-items: center;
@@ -190,18 +189,16 @@
     box-sizing: border-box;
     }
 /* Accordion */
-
     .accordion {
-      position: fixed;
-      right: 40px;
-      bottom: 140px;
-      z-index: 1000;
-      background: #888888ee;
+      position: static;
+      margin: 60px auto 40px auto;
+      background: #888; /* solid for better readability */
       border-radius: 14px;
-      max-width: 400px;
+      max-width: 800px;
       width: 90vw;
       box-shadow: 0 2px 10px #0001;
-      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     .accordion-item + .accordion-item {
       border-top: 1px solid #ccc;
@@ -233,9 +230,7 @@
     .accordion-content.open {
       display: block;
     }
-
 /* Flex Container and Video Wrapper for YouTube Short Videos */
-
     .flex-container {
       display: flex;
       position: absolute;
@@ -279,8 +274,6 @@
     top: unset;
   }
 }
-
-
     /* Footer Section */
     .site-footer {
       height: 120px;
@@ -346,53 +339,35 @@
         height: auto;
         padding: 110px 8px 60px 8px;
         box-sizing: border-box;
+        background-position: center top; 
       }
        .white-text-box {
        display: none;
       }
-
       .upper-text-box {
         position: static;
         width: 100%;
         margin: 20px 0;
-        text-align: left;
+        text-align: justify;
       }
-       .video-wrapper {
+      .video-wrapper {
         width: 90vw;
+        position: center;
         max-width: 500px;
         height: calc(90vw * 0.5625); /* 16:9 aspect ratio */
         margin: 0 auto 28px auto;
       }
       .flex-container {
-        position: static !important;
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
-        padding: 0;
-        top: unset;
-      }
+        padding: 0 12px;
+        justify-content: center;
+        align-items: center;
+        }
       .accordion {
-        position: fixed;
-        right: 40px;
-        bottom: 140px;
-        z-index: 1000;
-        background: #888888ee;
-        border-radius: 14px;
-        max-width: 400px;
-        width: 90vw;
-        box-shadow: 0 2px 10px #0001;
-        margin: 0;
+        margin: 40px 16px;
+        width: calc(100% - 32px);
+        border-radius: 8px;
+        box-shadow: none;
       }
-
-    @media (max-width: 768px) {
-      .accordion {
-        right: 10px;
-        left: 10px;
-        bottom: 20px;
-        max-width: none;
-        width: auto;
-      }
-    }
       .site-footer {
         position: relative;
         padding: 20px 8px;
