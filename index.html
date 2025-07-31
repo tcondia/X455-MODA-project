@@ -142,8 +142,6 @@ html, body {
       }
     }
 
-
-/* OTHER PAGE STYLES */
 .background-section {
   position: relative;
   background-image: url('images/background1.jpg');
@@ -201,10 +199,18 @@ html, body {
   box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
-  /* Remove fixed height! */
 }
 
 @media (max-width: 900px) {
+  .background-section {
+    position: relative;
+    background-image: url('images/background1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75vh;
+    padding-bottom: 50px;
+    box-sizing: content-box;
+  }
   .text-overlay-box {
     width: 95vw;
     max-width: 95vw;
@@ -213,16 +219,22 @@ html, body {
     padding-left: 10px;
     padding-right: 10px;
     transform: translateY(-50%);
-    margin-top: 48px;   /* Add this for tablets */
+    margin-top: 48px;  
     overflow-x: hidden;
   }
+  .vertical-accent {
+    display: none;
+  }
+  .horizontal-accent{
+    display: none;
+  }
 }
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   .text-overlay-box {
     position: static;
     width: 100%;
     max-width: 100%;
-    margin: 500px 0 0 0;   /* Larger top margin for phones */
+    margin: 300px 0 0 0;
     transform: none;
     padding: 12px 6px;
     font-size: 16px;
@@ -230,7 +242,6 @@ html, body {
     overflow-x: hidden;
   }
 }
-
 .site-footer {
   height: 120px;
   background-color: #888888;
@@ -238,7 +249,6 @@ html, body {
   position: relative;
   width: 100%;
 }
-
 .footer-bar {
   position: absolute;
   top: 0;
@@ -247,7 +257,6 @@ html, body {
   right: 418px;
   background-color: #c39fc4;
 }
-
 .footer-logo {
   position: absolute;
   right: calc(209px - 90px);
@@ -255,7 +264,6 @@ html, body {
   transform: translateY(-50%);
   height: 60px;
 }
-
 .footer-contact,
 .footer-text {
   position: absolute;
@@ -265,17 +273,14 @@ html, body {
   margin: 0;
   font-family: Helvetica, sans-serif;
 }
-
 .footer-contact {
   bottom: 55px;
   left: 12px;
 }
-
 .footer-text {
   bottom: 40px;
   left: 12px;
 }
-
 .social-icons {
   position: absolute;
   bottom: 35px;
@@ -283,20 +288,16 @@ html, body {
   display: flex;
   gap: 16px;
 }
-
 .social-icon {
   width: 36px;
   height: 36px;
   transition: opacity 0.2s ease;
 }
-
 .social-icon:hover {
   opacity: 0.7;
 }
-
-
     /* MOBILE ONLY - PHONES */
-    @media only screen and (max-width: 750px) {
+    @media only screen and (max-width: 900px) {
       .background-section {
         height: auto;
         min-height: 100vh;

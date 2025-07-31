@@ -369,34 +369,26 @@
         box-shadow: none;
       }
       .site-footer {
-        position: relative;
-        padding: 20px 8px;
-        height: auto;
-        min-height: 160px;
-      }
-      .footer-logo,
-      .footer-bar { display: none; }
-      .footer-contact,
-      .footer-text {
         position: static;
+        height: auto;
+        padding: 20px 8px 16px 8px;
         text-align: center;
-        font-size: 14px;
-        margin: 8px 0 0 0;
-        width: 100%;
       }
-      .footer-contact { margin-top: 16px; }
+      .footer-contact, .footer-text { display: none; }
+      .footer-logo, .footer-bar {
+        position: static;
+        display: block;
+        margin: 8px auto 0 auto;
+        left: unset; right: unset; top: unset; transform: none;
+        height: 40px; max-width: 90vw;
+      }
       .social-icons {
         position: static;
-        display: flex;
         justify-content: center;
-        gap: 16px;
         margin: 16px 0 0 0;
-        width: 100%;
       }
-      .social-icon {
-        width: 25px;
-        height: 25px;
-      }
+      .social-icon { width: 25px; height: 25px; }
+
     }
   </style>
 </head>

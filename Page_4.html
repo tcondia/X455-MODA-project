@@ -345,34 +345,24 @@
       }
       .site-footer {
         position: static;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
         height: auto;
-        padding: 20px 8px;
+        padding: 20px 8px 16px 8px;
         text-align: center;
       }
-      .footer-contact,
-      .footer-text {
-        display: none;
-      }
-      .footer-logo,
-      .footer-bar {
+      .footer-contact, .footer-text { display: none; }
+      .footer-logo, .footer-bar {
         position: static;
-        text-align: center;
-        font-size: 14px;
-        margin: 8px 0;
+        display: block;
+        margin: 8px auto 0 auto;
+        left: unset; right: unset; top: unset; transform: none;
+        height: 40px; max-width: 90vw;
       }
       .social-icons {
         position: static;
         justify-content: center;
         margin: 16px 0 0 0;
       }
-      .social-icon {
-        width: 25px;
-        height: 25px;
-      }
+      .social-icon { width: 25px; height: 25px; }
     }
   </style>
 </head>
